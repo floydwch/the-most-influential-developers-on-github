@@ -10,7 +10,8 @@ def grab():
 
     with GzipFile(fileobj=urlopen(url)) as gz_file:
         events = map(json.loads, list(gz_file))
-        print events
+        watch_events = filter(lambda x: x['type'] == 'WatchEvent', events)
+        print watch_events
 
 
 grab()
