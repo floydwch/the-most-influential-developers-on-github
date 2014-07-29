@@ -18,10 +18,17 @@ def grab():
 
         with GzipFile(fileobj=urlopen(url)) as gz_file:
             events = map(json.loads, list(gz_file))
-            watch_events = map(
-                lambda x: x,
-                filter(lambda x: x['type'] == 'WatchEvent', events))
 
+            well_defined_events = filter(
+                lambda x: x['type'] == 'WatchEvent'
+                and x['actor'].get('login', False), events)
+
+            watch_events = map(
+                lambda x: (
+                    x['actor']['login'], x['repo']['name'], x['created_at']),
+                well_defined_events)
+
+            print watch_events
             # print (map(lambda x: x[1].get('login', False), watch_events))
 
 
