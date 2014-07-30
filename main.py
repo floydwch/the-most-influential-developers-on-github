@@ -71,7 +71,11 @@ def grab(number):
         except Exception as e:
             logging.warning(str(e))
             continue
+
         break
+
+    else:
+        return []
 
 
 numbers_chunks = chunked(
