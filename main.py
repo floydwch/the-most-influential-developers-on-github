@@ -90,16 +90,8 @@ watch_events = db['watch_events']
 
 for numbers in numbers_chunks:
     pool = Pool(THREAD_NUMBER)
-    watch_events = flatten(pool.map(grab, numbers))
+    new_watch_events = flatten(pool.map(grab, numbers))
     pool.close()
     pool.join()
 
-    bulk = db['watch_events'].initialize_unordered_bulk_op()
-
-    for watch_event in watch_events:
-        bulk.find(watch_event).upsert().update({'$set': watch_event})
-
-    try:
-        bulk.execute()
-    except BulkWriteError as bwe:
-        logging.warning(bwe.details)
+    watch_events.insert(new_watch_events)
