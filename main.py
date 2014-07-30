@@ -33,7 +33,7 @@ def field_select(event):
     if event.get('repo', None):
         if type(event['actor']) is unicode:
             refined = (
-                event['actor'], event['repo']['name'], event['created_at'])
+                event['actor'], event.get('repo', {}).get('name', None), event.get('created_at', None))
         else:
             refined = (
                 event.get('actor', {}).get('login', None),
