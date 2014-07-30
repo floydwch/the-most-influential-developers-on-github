@@ -38,8 +38,6 @@ def grab():
     from datetime import datetime, timedelta
 
     from_time = datetime(2011, 2, 12, 0)
-    # from_time = datetime(2011, 3, 15, 21)
-    # from_time = datetime(2012, 7, 27, 0)
     to_time = datetime(2014, 7, 29, 0)
     time_strs = [(from_time + timedelta(hours=x)).strftime(
         '%Y-%m-%d-%-H') for x in range(0, int(
@@ -48,15 +46,21 @@ def grab():
     for time_str in time_strs:
         url = 'http://data.githubarchive.org/%s.json.gz' % time_str
 
-        with GzipFile(fileobj=urlopen(url)) as gz_file:
-            events = loads_invalid_obj_list(''.join(
-                map(lambda x: unicode(x, 'ISO-8859-1'), map(
-                    lambda x: x.strip(), list(gz_file)))))
+        while True:
+            try:
+                with GzipFile(fileobj=urlopen(url)) as gz_file:
+                    events = loads_invalid_obj_list(''.join(
+                        map(lambda x: unicode(x, 'ISO-8859-1'), map(
+                            lambda x: x.strip(), list(gz_file)))))
 
-            watch_events = map(field_select, filter(
-                lambda x: x['type'] == 'WatchEvent', events))
+                    watch_events = map(field_select, filter(
+                        lambda x: x['type'] == 'WatchEvent', events))
 
-            print watch_events, time_str
+                    print watch_events, time_str
+            except Exception as e:
+                print e
+                continue
+            break
 
 
 grab()
