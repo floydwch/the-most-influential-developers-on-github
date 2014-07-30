@@ -7,7 +7,8 @@ def grab():
     import json
     from datetime import datetime, timedelta
 
-    from_time = datetime(2011, 2, 12, 0)
+    # from_time = datetime(2011, 2, 12, 0)
+    from_time = datetime(2011, 3, 15, 21)
     to_time = datetime(2014, 7, 29, 0)
     time_strs = [(from_time + timedelta(hours=x)).strftime(
         '%Y-%m-%d-%-H') for x in range(0, int(
@@ -17,7 +18,9 @@ def grab():
         url = 'http://data.githubarchive.org/%s.json.gz' % time_str
 
         with GzipFile(fileobj=urlopen(url)) as gz_file:
-            events = map(json.loads, list(gz_file))
+            events = map(
+                lambda x: json.loads(unicode(x, 'ISO-8859-1')),
+                filter(lambda x: x != '\n', list(gz_file)))
 
             well_defined_events = filter(
                 lambda x: x['type'] == 'WatchEvent'
@@ -28,7 +31,7 @@ def grab():
                     x['actor']['login'], x['repo']['name'], x['created_at']),
                 well_defined_events)
 
-            print watch_events
+            print watch_events, time_str
             # print (map(lambda x: x[1].get('login', False), watch_events))
 
 
