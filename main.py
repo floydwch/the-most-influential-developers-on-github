@@ -2,10 +2,14 @@
 
 from datetime import datetime
 from multiprocessing import Pool
+from unqlite import UnQLite
+from itertools import chain
+import logging
 
 
 FROM_TIME = datetime(2011, 2, 12, 0)
-TO_TIME = datetime(2011, 2, 13, 0)
+TO_TIME = datetime(2014, 7, 29, 0)
+logging.basicConfig(filename='grab.log', level=logging.DEBUG)
 
 
 def loads_invalid_obj_list(s):
@@ -26,17 +30,20 @@ def loads_invalid_obj_list(s):
 def field_select(event):
     if event.get('repo', None):
         if type(event['actor']) is unicode:
-            return (event['actor'], event['repo']['name'], event['created_at'])
+            refined = (
+                event['actor'], event['repo']['name'], event['created_at'])
         else:
-            return (
+            refined = (
                 event.get('actor', {}).get('login', None),
                 event.get('repo', {}).get('name', None),
                 event.get('created_at', None))
     else:
-        return (
+        refined = (
             event.get('actor', None),
             event.get('repository', {}).get('name', None),
             event.get('created_at', None))
+
+    return dict(zip(['actor', 'repo', 'created_at'], refined))
 
 
 def grab(number):
@@ -48,19 +55,18 @@ def grab(number):
 
     url = 'http://data.githubarchive.org/%s.json.gz' % time_str
 
-    while True:
+    for i in xrange(10):  # retry 10 times
         try:
             with GzipFile(fileobj=urlopen(url)) as gz_file:
                 events = loads_invalid_obj_list(''.join(
                     map(lambda x: unicode(x, 'ISO-8859-1'), map(
                         lambda x: x.strip(), list(gz_file)))))
 
-                watch_events = map(field_select, filter(
+                return map(field_select, filter(
                     lambda x: x['type'] == 'WatchEvent', events))
 
-                print watch_events, time_str
         except Exception as e:
-            print e
+            logging.warning(str(e))
             continue
         break
 
@@ -68,6 +74,12 @@ def grab(number):
 numbers = range(int((TO_TIME - FROM_TIME).total_seconds() / 3600))
 
 pool = Pool()
-pool.map(grab, numbers)
+watch_events = pool.map(grab, numbers)
 pool.close()
 pool.join()
+
+db = UnQLite('github.db')
+db.collection('watch_events').create()
+
+with db.transaction():
+    db.collection('watch_events').store(list(chain(*watch_events)))
