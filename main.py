@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 
 from datetime import datetime
+from multiprocessing import Pool
+
 
 FROM_TIME = datetime(2011, 2, 12, 0)
-TO_TIME = datetime(2014, 7, 29, 0)
+TO_TIME = datetime(2011, 2, 13, 0)
 
 
 def loads_invalid_obj_list(s):
@@ -66,4 +68,7 @@ def grab(number):
 
 numbers = range(int((TO_TIME - FROM_TIME).total_seconds() / 3600))
 
-map(grab, numbers)
+pool = Pool()
+pool.map(grab, numbers)
+pool.close()
+pool.join()
