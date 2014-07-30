@@ -46,7 +46,6 @@ def grab(number):
 
     time_str = (FROM_TIME + timedelta(hours=number)).strftime('%Y-%m-%d-%-H')
 
-    # for time_str in time_strs:
     url = 'http://data.githubarchive.org/%s.json.gz' % time_str
 
     while True:
