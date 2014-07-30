@@ -3,9 +3,8 @@
 from datetime import datetime
 from multiprocessing import Pool
 from unqlite import UnQLite
-from itertools import chain
 import logging
-from more_itertools import chunked
+from more_itertools import chunked, flatten
 
 
 FROM_TIME = datetime(2011, 2, 12, 0)
@@ -91,4 +90,4 @@ for numbers in numbers_chunks:
     pool.join()
 
     with db.transaction():
-        db.collection('watch_events').store(list(chain(*watch_events)))
+        db.collection('watch_events').store(list(flatten(watch_events)))
