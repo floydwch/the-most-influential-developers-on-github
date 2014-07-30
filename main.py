@@ -9,7 +9,8 @@ from more_itertools import chunked, flatten
 
 FROM_TIME = datetime(2011, 2, 12, 0)
 TO_TIME = datetime(2014, 7, 29, 0)
-CHUNK_SIZE = 24
+CHUNK_SIZE = 16
+THREAD_NUMBER = 2 * CHUNK_SIZE
 
 logging.basicConfig(filename='grab.log', level=logging.DEBUG)
 
@@ -84,7 +85,7 @@ db = UnQLite('github.db')
 db.collection('watch_events').create()
 
 for numbers in numbers_chunks:
-    pool = Pool()
+    pool = Pool(THREAD_NUMBER)
     watch_events = pool.map(grab, numbers)
     pool.close()
     pool.join()
