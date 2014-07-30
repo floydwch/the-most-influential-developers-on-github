@@ -9,8 +9,8 @@ from more_itertools import chunked
 
 
 FROM_TIME = datetime(2011, 2, 12, 0)
-TO_TIME = datetime(2011, 2, 17, 0)
-CHUNK_NUMBER = 24
+TO_TIME = datetime(2014, 7, 29, 0)
+CHUNK_SIZE = 24
 
 logging.basicConfig(filename='grab.log', level=logging.DEBUG)
 
@@ -79,7 +79,7 @@ def grab(number):
 
 
 numbers_chunks = chunked(
-    range(int((TO_TIME - FROM_TIME).total_seconds() / 3600)), 24)
+    range(int((TO_TIME - FROM_TIME).total_seconds() / 3600)), CHUNK_SIZE)
 
 db = UnQLite('github.db')
 db.collection('watch_events').create()
