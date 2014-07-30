@@ -45,7 +45,7 @@ def field_select(event):
     else:
         refined = (
             event.get('actor', None),
-            event.get('repository', {}).get('name', None),
+            event.get('repository', {}).get('full_name', None),
             event.get('created_at', None))
 
     return dict(zip(['actor', 'repo', 'created_at'], refined))
