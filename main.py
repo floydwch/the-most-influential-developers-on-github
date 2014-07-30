@@ -1,14 +1,28 @@
 # -*- coding: utf-8 -*-
 
 
+def loads_invalid_obj_list(s):
+    from json import JSONDecoder
+
+    decoder = JSONDecoder()
+    s_len = len(s)
+    objs = []
+    end = 0
+
+    while end != s_len:
+        obj, end = decoder.raw_decode(s, idx=end)
+        objs.append(obj)
+
+    return objs
+
+
 def grab():
     from gzip import GzipFile
     from urlgrabber import urlopen
-    import json
     from datetime import datetime, timedelta
 
-    # from_time = datetime(2011, 2, 12, 0)
-    from_time = datetime(2011, 3, 15, 21)
+    from_time = datetime(2011, 2, 12, 0)
+    # from_time = datetime(2011, 3, 15, 21)
     to_time = datetime(2014, 7, 29, 0)
     time_strs = [(from_time + timedelta(hours=x)).strftime(
         '%Y-%m-%d-%-H') for x in range(0, int(
@@ -18,9 +32,9 @@ def grab():
         url = 'http://data.githubarchive.org/%s.json.gz' % time_str
 
         with GzipFile(fileobj=urlopen(url)) as gz_file:
-            events = map(
-                lambda x: json.loads(unicode(x, 'ISO-8859-1')),
-                filter(lambda x: x != '\n', list(gz_file)))
+            events = loads_invalid_obj_list(''.join(
+                map(lambda x: unicode(x, 'ISO-8859-1'), map(
+                    lambda x: x.strip(), list(gz_file)))))
 
             well_defined_events = filter(
                 lambda x: x['type'] == 'WatchEvent'
