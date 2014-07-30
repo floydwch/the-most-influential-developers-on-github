@@ -2,14 +2,15 @@
 
 from datetime import datetime
 from multiprocessing import Pool
-from unqlite import UnQLite
 import logging
 from more_itertools import chunked, flatten
+from pymongo import MongoClient
+from pymongo.errors import BulkWriteError
 
 
 FROM_TIME = datetime(2011, 2, 12, 0)
-TO_TIME = datetime(2014, 7, 29, 0)
-CHUNK_SIZE = 16
+TO_TIME = datetime(2011, 2, 13, 0)
+CHUNK_SIZE = 1
 THREAD_NUMBER = 2 * CHUNK_SIZE
 
 logging.basicConfig(filename='grab.log', level=logging.DEBUG)
@@ -34,7 +35,9 @@ def field_select(event):
     if event.get('repo', None):
         if type(event['actor']) is unicode:
             refined = (
-                event['actor'], event.get('repo', {}).get('name', None), event.get('created_at', None))
+                event['actor'],
+                event.get('repo', {}).get('name', None),
+                event.get('created_at', None))
         else:
             refined = (
                 event.get('actor', {}).get('login', None),
@@ -81,14 +84,22 @@ def grab(number):
 numbers_chunks = chunked(
     range(int((TO_TIME - FROM_TIME).total_seconds() / 3600)), CHUNK_SIZE)
 
-db = UnQLite('github.db')
-db.collection('watch_events').create()
+client = MongoClient()
+db = client['github']
+watch_events = db['watch_events']
 
 for numbers in numbers_chunks:
     pool = Pool(THREAD_NUMBER)
-    watch_events = pool.map(grab, numbers)
+    watch_events = flatten(pool.map(grab, numbers))
     pool.close()
     pool.join()
 
-    with db.transaction():
-        db.collection('watch_events').store(list(flatten(watch_events)))
+    bulk = db['watch_events'].initialize_unordered_bulk_op()
+
+    for watch_event in watch_events:
+        bulk.find(watch_event).upsert().update({'$set': watch_event})
+
+    try:
+        bulk.execute()
+    except BulkWriteError as bwe:
+        logging.warning(bwe.details)
