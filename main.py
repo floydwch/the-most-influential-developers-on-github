@@ -5,7 +5,6 @@ from multiprocessing import Pool
 import logging
 from more_itertools import chunked, flatten
 from pymongo import MongoClient
-from pymongo.errors import BulkWriteError
 
 
 FROM_TIME = datetime(2011, 2, 12, 0)
