@@ -16,13 +16,42 @@ def loads_invalid_obj_list(s):
     return objs
 
 
+def event_check(event):
+    if event['type'] != 'WatchEvent':
+        return False
+    # if event.get('actor', False) is False:
+    #     return False
+    if type(event['actor']) is dict:
+        if event['actor'].get('login', False) is False:
+            return False
+
+    return True
+
+
+def field_select(event):
+    if event.get('repo', False):
+        if type(event['actor']) is unicode:
+            return (event['actor'], event['repo']['name'], event['created_at'])
+        else:
+            return (
+                event['actor']['login'],
+                event['repo']['name'],
+                event['created_at'])
+    else:
+        return (
+            event['actor'],
+            event['repository']['name'],
+            event['created_at'])
+
+
 def grab():
     from gzip import GzipFile
     from urlgrabber import urlopen
     from datetime import datetime, timedelta
 
-    from_time = datetime(2011, 2, 12, 0)
+    # from_time = datetime(2011, 2, 12, 0)
     # from_time = datetime(2011, 3, 15, 21)
+    from_time = datetime(2014, 7, 27, 0)
     to_time = datetime(2014, 7, 29, 0)
     time_strs = [(from_time + timedelta(hours=x)).strftime(
         '%Y-%m-%d-%-H') for x in range(0, int(
@@ -36,14 +65,8 @@ def grab():
                 map(lambda x: unicode(x, 'ISO-8859-1'), map(
                     lambda x: x.strip(), list(gz_file)))))
 
-            well_defined_events = filter(
-                lambda x: x['type'] == 'WatchEvent'
-                and x['actor'].get('login', False), events)
-
-            watch_events = map(
-                lambda x: (
-                    x['actor']['login'], x['repo']['name'], x['created_at']),
-                well_defined_events)
+            well_defined_events = filter(event_check, events)
+            watch_events = map(field_select, well_defined_events)
 
             print watch_events, time_str
             # print (map(lambda x: x[1].get('login', False), watch_events))
