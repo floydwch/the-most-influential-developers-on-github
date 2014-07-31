@@ -8,11 +8,16 @@ from pymongo import MongoClient
 
 
 FROM_TIME = datetime(2011, 2, 12, 0)
-TO_TIME = datetime(2014, 7, 30, 13)
+TO_TIME = datetime(2011, 2, 12, 3)
 CHUNK_SIZE = 60
 THREAD_NUMBER = 2 * CHUNK_SIZE
 
 logging.basicConfig(filename='grab.log', level=logging.DEBUG)
+
+client = MongoClient()
+db = client['github']
+watch_events = db['watch_events']
+processed_times = db['processed_times']
 
 
 def loads_invalid_obj_list(s):
@@ -73,6 +78,10 @@ def grab(number):
 
     time_str = (FROM_TIME + timedelta(hours=number)).strftime('%Y-%m-%d-%-H')
 
+    if processed_times.find(
+            {'time': time_str, 'status': 'ok'}).count():  # already grab
+        return []
+
     url = 'http://data.githubarchive.org/%s.json.gz' % time_str
 
     for i in xrange(10):  # retry 10 times
@@ -82,27 +91,29 @@ def grab(number):
                     map(lambda x: unicode(x, 'ISO-8859-1'), map(
                         lambda x: x.strip(), list(gz_file)))))
 
+                processed_times.insert({'time': time_str, 'status': 'ok'})
+
                 return map(field_select, filter(
                     lambda x: x['type'] == 'WatchEvent', events))
+
         except Exception as e:
             logging.warning(str(e))
             continue
         break
     else:
+        processed_times.insert({'time': time_str, 'status': 'error'})
         return []
 
 
 numbers_chunks = chunked(
     range(int((TO_TIME - FROM_TIME).total_seconds() / 3600)), CHUNK_SIZE)
 
-client = MongoClient()
-db = client['github']
-watch_events = db['watch_events']
 
 for numbers in numbers_chunks:
     pool = Pool(THREAD_NUMBER)
-    new_watch_events = flatten(pool.map(grab, numbers))
+    new_watch_events = list(flatten(pool.map(grab, numbers)))
     pool.close()
     pool.join()
 
-    watch_events.insert(new_watch_events)
+    if new_watch_events:  # avoid do an empty bulk write
+        watch_events.insert(new_watch_events)
