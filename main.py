@@ -8,8 +8,8 @@ from pymongo import MongoClient
 
 
 FROM_TIME = datetime(2011, 2, 12, 0)
-TO_TIME = datetime(2011, 2, 13, 0)
-CHUNK_SIZE = 1
+TO_TIME = datetime(2014, 7, 30, 13)
+CHUNK_SIZE = 60
 THREAD_NUMBER = 2 * CHUNK_SIZE
 
 logging.basicConfig(filename='grab.log', level=logging.DEBUG)
@@ -43,10 +43,25 @@ def field_select(event):
                 event.get('repo', {}).get('name', None),
                 event.get('created_at', None))
     else:
-        refined = (
-            event.get('actor', None),
-            event.get('repository', {}).get('full_name', None),
-            event.get('created_at', None))
+        if event.get('repository', {}).get('full_name', None):
+            refined = (
+                event.get('actor', None),
+                event.get('repository', {}).get('full_name', None),
+                event.get('created_at', None))
+        else:
+            if event.get('repository', {}).get('owner', None) and \
+                    event.get('repository', {}).get('name', None):
+                refined = (
+                    event.get('actor', None),
+                    event.get('repository', {}).get('owner') + '/'
+                    + event.get('repository', {}).get('name'),
+                    event.get('repository', {}).get('name', None),
+                    event.get('created_at', None))
+            else:
+                refined = (
+                    event.get('actor', None),
+                    None,
+                    event.get('created_at', None))
 
     return dict(zip(['actor', 'repo', 'created_at'], refined))
 
@@ -69,13 +84,10 @@ def grab(number):
 
                 return map(field_select, filter(
                     lambda x: x['type'] == 'WatchEvent', events))
-
         except Exception as e:
             logging.warning(str(e))
             continue
-
         break
-
     else:
         return []
 
