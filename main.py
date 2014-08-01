@@ -18,6 +18,7 @@ client = MongoClient()
 db = client['github']
 watch_events = db['watch_events']
 processed_times = db['processed_times']
+defects = db['defects']
 
 
 def loads_invalid_obj_list(s):
@@ -67,6 +68,9 @@ def field_select(event):
                     event.get('actor', None),
                     None,
                     event.get('created_at', None))
+
+    if None in refined:
+        defects.insert(event)
 
     return dict(zip(['actor', 'repo', 'created_at'], refined))
 
