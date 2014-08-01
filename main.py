@@ -45,7 +45,8 @@ def field_select(event):
                 event.get('created_at', None))
         else:
             refined = (
-                event.get('actor', {}).get('login', None),
+                event.get('actor', {}).get(
+                    'login', event.get('payload', {}).get('actor', None)),
                 event.get('repo', {}).get('name', None),
                 event.get('created_at', None))
     else:
