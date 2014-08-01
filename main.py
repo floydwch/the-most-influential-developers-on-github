@@ -115,7 +115,8 @@ numbers_chunks = chunked(
 
 for numbers in numbers_chunks:
     pool = Pool(THREAD_NUMBER)
-    new_watch_events = list(flatten(pool.map(grab, numbers)))
+    new_watch_events = filter(
+        lambda x: None not in x.values(), flatten(pool.map(grab, numbers)))
     pool.close()
     pool.join()
 
