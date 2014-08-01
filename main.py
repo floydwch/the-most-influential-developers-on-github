@@ -74,6 +74,9 @@ def field_select(event):
                     None,
                     event.get('created_at', None))
 
+    if refined[1] == '/':
+        refined[1] = None
+
     if None in refined:
         defects.insert(event)
 
