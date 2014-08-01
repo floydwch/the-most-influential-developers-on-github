@@ -47,8 +47,12 @@ def field_select(event):
             refined = (
                 event.get('actor', {}).get(
                     'login', event.get('payload', {}).get('actor', None)),
-                event.get('repo', {}).get('name', None),
+                event.get('repo', {}).get(
+                    'name', event.get('payload', {}).get('repo', None)),
                 event.get('created_at', None))
+
+            if event.get('repo', {}).get('name', None) == '/':
+                refined[1] = event.get('payload', {}).get('repo', None)
     else:
         if event.get('repository', {}).get('full_name', None):
             refined = (
