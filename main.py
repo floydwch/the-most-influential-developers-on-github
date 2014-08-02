@@ -74,18 +74,19 @@ def field_select(event):
                     None,
                     event.get('created_at', None))
 
-    owner, name = refined[1].split('/')
-    if len(owner) == 0 or len(name) == 0:
-        if event.get('url', None):
-            split_url = event['url'].split('/')
+    if refined[1]:
+        owner, name = refined[1].split('/')
+        if len(owner) == 0 or len(name) == 0:
+            if event.get('url', None):
+                split_url = event['url'].split('/')
 
-            if split_url[0] == 'https' and \
-                    split_url[1] == '' and \
-                    split_url[2] == 'github.com' and \
-                    len(split_url[3]) > 0 and \
-                    len(split_url[4]) > 0:
+                if split_url[0] == 'https' and \
+                        split_url[1] == '' and \
+                        split_url[2] == 'github.com' and \
+                        len(split_url[3]) > 0 and \
+                        len(split_url[4]) > 0:
 
-                refined[1] = split_url[3] + '/' + split_url[4]
+                    refined[1] = split_url[3] + '/' + split_url[4]
 
     if refined[1] == '/':
         refined[1] = None
