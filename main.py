@@ -129,7 +129,7 @@ def grab(number):
                     lambda x: x['type'] == 'WatchEvent', events))
 
         except Exception as e:
-            logging.warning(str(e))
+            logging.warning(str(e) + ' -- ' + url)
             continue
         break
     else:
