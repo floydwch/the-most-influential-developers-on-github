@@ -79,20 +79,21 @@ def field_select(event):
 
     if refined[1]:
         owner, name = refined[1].split('/')
-        if len(owner) == 0 or len(name) == 0:
-            if event.get('url', None):
-                split_url = event['url'].split('/')
 
-                if split_url[0] == 'https:' and \
-                        split_url[1] == '' and \
-                        split_url[2] == 'github.com' and \
-                        len(split_url[3]) > 0 and \
-                        len(split_url[4]) > 0:
+    if refined[1] is None or len(owner) == 0 or len(name) == 0:
+        if event.get('url', None):
+            split_url = event['url'].split('/')
 
-                    refined = (
-                        refined[0],
-                        split_url[3] + '/' + split_url[4],
-                        refined[2])
+            if split_url[0] == 'https:' and \
+                    split_url[1] == '' and \
+                    split_url[2] == 'github.com' and \
+                    len(split_url[3]) > 0 and \
+                    len(split_url[4]) > 0:
+
+                refined = (
+                    refined[0],
+                    split_url[3] + '/' + split_url[4],
+                    refined[2])
 
     if refined[1] == '/':
         refined = (refined[0], None, refined[2])
