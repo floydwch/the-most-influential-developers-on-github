@@ -67,8 +67,8 @@ def field_select(event):
                     event.get('repository', {}).get('name', None):
                 refined = (
                     event.get('actor', None),
-                    event.get('repository', {}).get('owner') + '/'
-                    + event.get('repository', {}).get('name'),
+                    event.get('repository', {})['owner'] + '/'
+                    + event.get('repository', {})['name'],
                     event.get('repository', {}).get('name', None),
                     event.get('created_at', None))
             else:
