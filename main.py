@@ -89,7 +89,7 @@ def field_select(event):
                     refined[1] = split_url[3] + '/' + split_url[4]
 
     if refined[1] == '/':
-        refined[1] = None
+        refined = (refined[0], None, refined[1])
 
     if None in refined:
         defects.insert(event)
