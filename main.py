@@ -52,7 +52,10 @@ def field_select(event):
                 event.get('created_at', None))
 
             if event.get('repo', {}).get('name', None) == '/':
-                refined[1] = event.get('payload', {}).get('repo', None)
+                refined = (
+                    refined[0],
+                    event.get('payload', {}).get('repo', None),
+                    refined[2])
     else:
         if event.get('repository', {}).get('full_name', None):
             refined = (
