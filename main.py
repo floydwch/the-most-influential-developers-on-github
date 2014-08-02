@@ -98,10 +98,12 @@ def field_select(event):
     if refined[1] == '/':
         refined = (refined[0], None, refined[2])
 
-    if None in refined:
-        defects.insert(event)
+    extraction = dict(zip(['actor', 'repo', 'created_at'], refined))
 
-    return dict(zip(['actor', 'repo', 'created_at'], refined))
+    if None in refined:
+        defects.insert({'event': event, 'extraction': extraction})
+
+    return extraction
 
 
 def grab(number):
