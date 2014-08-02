@@ -83,7 +83,7 @@ def field_select(event):
             if event.get('url', None):
                 split_url = event['url'].split('/')
 
-                if split_url[0] == 'https' and \
+                if split_url[0] == 'https:' and \
                         split_url[1] == '' and \
                         split_url[2] == 'github.com' and \
                         len(split_url[3]) > 0 and \
