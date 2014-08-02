@@ -86,10 +86,13 @@ def field_select(event):
                         len(split_url[3]) > 0 and \
                         len(split_url[4]) > 0:
 
-                    refined[1] = split_url[3] + '/' + split_url[4]
+                    refined = (
+                        refined[0],
+                        split_url[3] + '/' + split_url[4],
+                        refined[2])
 
     if refined[1] == '/':
-        refined = (refined[0], None, refined[1])
+        refined = (refined[0], None, refined[2])
 
     if None in refined:
         defects.insert(event)
