@@ -104,7 +104,7 @@ def field_select(event):
     if None in refined:
         thread = Thread(
             target=defects.insert,
-            args=({'event': event, 'extraction': extraction}))
+            args=({'event': event, 'extraction': extraction}, ))
         thread.start()
 
     return extraction
@@ -135,12 +135,12 @@ def grab(number):
                         lambda x: x['type'] == 'WatchEvent', events)))
 
                 thread = Thread(
-                    target=watch_events.insert, args=(new_watch_events))
+                    target=watch_events.insert, args=(new_watch_events, ))
                 thread.start()
 
                 thread = Thread(
                     target=processed_times.insert,
-                    args=({'time': time_str, 'status': 'ok'}))
+                    args=({'time': time_str, 'status': 'ok'}, ))
                 thread.start()
         except Exception as e:
             logging.warning(str(e) + ' -- ' + url)
@@ -149,7 +149,7 @@ def grab(number):
     else:
         thread = Thread(
             target=processed_times.insert,
-            args=({'time': time_str, 'status': 'error'}))
+            args=({'time': time_str, 'status': 'error'}, ))
         thread.start()
 
 
