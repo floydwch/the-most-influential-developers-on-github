@@ -3,14 +3,14 @@
 from datetime import datetime
 from multiprocessing import Pool
 import logging
-from more_itertools import chunked, flatten
 from pymongo import MongoClient
+from random import shuffle
 
 
 FROM_TIME = datetime(2011, 2, 12, 0)
-TO_TIME = datetime(2011, 2, 12, 3)
-CHUNK_SIZE = 60
-THREAD_NUMBER = 2 * CHUNK_SIZE
+TO_TIME = datetime(2014, 8, 1, 22)
+# CHUNK_SIZE = 60
+THREAD_NUMBER = 120
 
 logging.basicConfig(filename='grab.log', level=logging.DEBUG)
 
@@ -115,7 +115,7 @@ def grab(number):
 
     if processed_times.find(
             {'time': time_str, 'status': 'ok'}).count():  # already grab
-        return []
+        return
 
     url = 'http://data.githubarchive.org/%s.json.gz' % time_str
 
@@ -126,30 +126,24 @@ def grab(number):
                     map(lambda x: unicode(x, 'ISO-8859-1'), map(
                         lambda x: x.strip(), list(gz_file)))))
 
+                new_watch_events = filter(
+                    lambda x: None not in x.values(), map(field_select, filter(
+                        lambda x: x['type'] == 'WatchEvent', events)))
+
+                watch_events.insert(new_watch_events)
                 processed_times.insert({'time': time_str, 'status': 'ok'})
-
-                return map(field_select, filter(
-                    lambda x: x['type'] == 'WatchEvent', events))
-
         except Exception as e:
             logging.warning(str(e) + ' -- ' + url)
             continue
         break
     else:
         processed_times.insert({'time': time_str, 'status': 'error'})
-        return []
 
 
-numbers_chunks = chunked(
-    range(int((TO_TIME - FROM_TIME).total_seconds() / 3600)), CHUNK_SIZE)
+numbers = range(int((TO_TIME - FROM_TIME).total_seconds() / 3600))
+shuffle(numbers)
 
-
-for numbers in numbers_chunks:
-    pool = Pool(THREAD_NUMBER)
-    new_watch_events = filter(
-        lambda x: None not in x.values(), flatten(pool.map(grab, numbers)))
-    pool.close()
-    pool.join()
-
-    if new_watch_events:  # avoid do an empty bulk write
-        watch_events.insert(new_watch_events)
+pool = Pool(THREAD_NUMBER)
+pool.map(grab, numbers)
+pool.close()
+pool.join()
