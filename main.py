@@ -7,18 +7,16 @@ import logging
 from pymongo import MongoClient
 from pymongo.errors import AutoReconnect
 from random import shuffle
-from time import sleep
 
 
 FROM_TIME = datetime(2011, 2, 12, 0)
 TO_TIME = datetime(2014, 8, 1, 22)
-# CHUNK_SIZE = 60
-THREAD_NUMBER = 48
-RECONNECT_TIME = 3
+THREAD_NUMBER = 51
+MONGO_MAX_POOL_SIZE = 817
 
 logging.basicConfig(filename='grab.log', level=logging.DEBUG)
 
-client = MongoClient()
+client = MongoClient(max_pool_size=MONGO_MAX_POOL_SIZE / THREAD_NUMBER)
 db = client['github']
 watch_events = db['watch_events']
 processed_times = db['processed_times']
@@ -32,7 +30,7 @@ def items_insert(collection):
                 collection.insert(items)
                 break
             except AutoReconnect:
-                sleep(RECONNECT_TIME)
+                pass
 
     return wrapper
 
@@ -173,7 +171,7 @@ def grab(number):
                 thread.start()
             break
         except AutoReconnect:
-            sleep(RECONNECT_TIME)
+            pass
 
 
 numbers = range(int((TO_TIME - FROM_TIME).total_seconds() / 3600))
