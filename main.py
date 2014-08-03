@@ -2,6 +2,7 @@
 
 from datetime import datetime
 from multiprocessing import Pool
+from threading import Thread
 import logging
 from pymongo import MongoClient
 from random import shuffle
@@ -101,7 +102,10 @@ def field_select(event):
     extraction = dict(zip(['actor', 'repo', 'created_at'], refined))
 
     if None in refined:
-        defects.insert({'event': event, 'extraction': extraction})
+        thread = Thread(
+            target=defects.insert,
+            args={'event': event, 'extraction': extraction})
+        thread.start()
 
     return extraction
 
@@ -130,14 +134,23 @@ def grab(number):
                     lambda x: None not in x.values(), map(field_select, filter(
                         lambda x: x['type'] == 'WatchEvent', events)))
 
-                watch_events.insert(new_watch_events)
-                processed_times.insert({'time': time_str, 'status': 'ok'})
+                thread = Thread(
+                    target=watch_events.insert, args=new_watch_events)
+                thread.start()
+
+                thread = Thread(
+                    target=processed_times.insert,
+                    args={'time': time_str, 'status': 'ok'})
+                thread.start()
         except Exception as e:
             logging.warning(str(e) + ' -- ' + url)
             continue
         break
     else:
-        processed_times.insert({'time': time_str, 'status': 'error'})
+        thread = Thread(
+            target=processed_times.insert,
+            args={'time': time_str, 'status': 'error'})
+        thread.start()
 
 
 numbers = range(int((TO_TIME - FROM_TIME).total_seconds() / 3600))
