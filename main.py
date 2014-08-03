@@ -5,13 +5,16 @@ from multiprocessing import Pool
 from threading import Thread
 import logging
 from pymongo import MongoClient
+from pymongo.errors import AutoReconnect
 from random import shuffle
+from time import sleep
 
 
 FROM_TIME = datetime(2011, 2, 12, 0)
 TO_TIME = datetime(2014, 8, 1, 22)
 # CHUNK_SIZE = 60
-THREAD_NUMBER = 120
+THREAD_NUMBER = 48
+RECONNECT_TIME = 3
 
 logging.basicConfig(filename='grab.log', level=logging.DEBUG)
 
@@ -20,6 +23,18 @@ db = client['github']
 watch_events = db['watch_events']
 processed_times = db['processed_times']
 defects = db['defects']
+
+
+def items_insert(collection):
+    def wrapper(items):
+        while True:
+            try:
+                collection.insert(items)
+                break
+            except AutoReconnect:
+                sleep(RECONNECT_TIME)
+
+    return wrapper
 
 
 def loads_invalid_obj_list(s):
@@ -103,7 +118,7 @@ def field_select(event):
 
     if None in refined:
         thread = Thread(
-            target=defects.insert,
+            target=items_insert(defects),
             args=({'event': event, 'extraction': extraction}, ))
         thread.start()
 
@@ -117,40 +132,48 @@ def grab(number):
 
     time_str = (FROM_TIME + timedelta(hours=number)).strftime('%Y-%m-%d-%-H')
 
-    if processed_times.find(
-            {'time': time_str, 'status': 'ok'}).count():  # already grab
-        return
-
-    url = 'http://data.githubarchive.org/%s.json.gz' % time_str
-
-    for i in xrange(10):  # retry 10 times
+    while True:
         try:
-            with GzipFile(fileobj=urlopen(url)) as gz_file:
-                events = loads_invalid_obj_list(''.join(
-                    map(lambda x: unicode(x, 'ISO-8859-1'), map(
-                        lambda x: x.strip(), list(gz_file)))))
+            if processed_times.find(
+                    {'time': time_str, 'status': 'ok'}).count():  # already grab
+                return
 
-                new_watch_events = filter(
-                    lambda x: None not in x.values(), map(field_select, filter(
-                        lambda x: x['type'] == 'WatchEvent', events)))
+            url = 'http://data.githubarchive.org/%s.json.gz' % time_str
 
+            for i in xrange(10):  # retry 10 times
+                try:
+                    with GzipFile(fileobj=urlopen(url)) as gz_file:
+                        events = loads_invalid_obj_list(''.join(
+                            map(lambda x: unicode(x, 'ISO-8859-1'), map(
+                                lambda x: x.strip(), list(gz_file)))))
+
+                        new_watch_events = filter(
+                            lambda x: None not in x.values(),
+                            map(field_select, filter(
+                                lambda x: x['type'] == 'WatchEvent', events)))
+
+                        if new_watch_events:
+                            thread = Thread(
+                                target=items_insert(watch_events),
+                                args=(new_watch_events, ))
+                            thread.start()
+
+                        thread = Thread(
+                            target=items_insert(processed_times),
+                            args=({'time': time_str, 'status': 'ok'}, ))
+                        thread.start()
+                except Exception as e:
+                    logging.warning(str(e) + ' -- ' + url)
+                    continue
+                break
+            else:
                 thread = Thread(
-                    target=watch_events.insert, args=(new_watch_events, ))
+                    target=items_insert(processed_times),
+                    args=({'time': time_str, 'status': 'error'}, ))
                 thread.start()
-
-                thread = Thread(
-                    target=processed_times.insert,
-                    args=({'time': time_str, 'status': 'ok'}, ))
-                thread.start()
-        except Exception as e:
-            logging.warning(str(e) + ' -- ' + url)
-            continue
-        break
-    else:
-        thread = Thread(
-            target=processed_times.insert,
-            args=({'time': time_str, 'status': 'error'}, ))
-        thread.start()
+            break
+        except AutoReconnect:
+            sleep(RECONNECT_TIME)
 
 
 numbers = range(int((TO_TIME - FROM_TIME).total_seconds() / 3600))
