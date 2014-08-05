@@ -11,8 +11,8 @@ from random import shuffle
 
 FROM_TIME = datetime(2011, 2, 12, 0)
 TO_TIME = datetime(2014, 8, 1, 22)
-THREAD_NUMBER = 51
-MONGO_MAX_POOL_SIZE = 817
+THREAD_NUMBER = 48
+MONGO_MAX_POOL_SIZE = 800
 
 logging.basicConfig(filename='grab.log', level=logging.DEBUG)
 
