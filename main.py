@@ -123,6 +123,22 @@ def field_select(event):
     return extraction
 
 
+def unicode_data_charset(string):
+    return unicode(string, 'ISO-8859-1')
+
+
+def is_not_none(data):
+    return None not in data.values()
+
+
+def strip(string):
+    return string.strip()
+
+
+def is_watch_event(event):
+    return event['type'] == 'WatchEvent'
+
+
 def grab(number):
     from gzip import GzipFile
     from urlgrabber import urlopen
@@ -142,13 +158,13 @@ def grab(number):
                 try:
                     with GzipFile(fileobj=urlopen(url)) as gz_file:
                         events = loads_invalid_obj_list(''.join(
-                            map(lambda x: unicode(x, 'ISO-8859-1'), map(
-                                lambda x: x.strip(), list(gz_file)))))
+                            map(unicode_data_charset, map(
+                                strip, list(gz_file)))))
 
                         new_watch_events = filter(
-                            lambda x: None not in x.values(),
+                            is_not_none,
                             map(field_select, filter(
-                                lambda x: x['type'] == 'WatchEvent', events)))
+                                is_watch_event, events)))
 
                         if new_watch_events:
                             thread = Thread(
