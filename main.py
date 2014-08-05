@@ -171,6 +171,9 @@ def grab(number):
                                 target=items_insert(watch_events),
                                 args=(new_watch_events, ))
                             thread.start()
+                        else:
+                            logging.warning(
+                                'new_watch_events is none' + ' -- ' + url)
 
                         thread = Thread(
                             target=items_insert(processed_times),
