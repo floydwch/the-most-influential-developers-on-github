@@ -7,6 +7,8 @@ import logging
 from pymongo import MongoClient
 from pymongo.errors import AutoReconnect
 from random import shuffle
+import arrow
+from arrow.parser import ParserError
 
 
 FROM_TIME = datetime(2011, 2, 12, 0)
@@ -111,6 +113,11 @@ def field_select(event):
 
     if refined[1] == '/':
         refined = (refined[0], None, refined[2])
+
+    try:
+        refined = (refined[0], refined[1], arrow.get(refined[2]).datetime)
+    except ParserError:
+        logging.warning('unknown format: ' + refined[2])
 
     extraction = dict(zip(['actor', 'repo', 'created_at'], refined))
 
