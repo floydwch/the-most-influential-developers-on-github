@@ -114,7 +114,10 @@ def field_select(event):
         refined = (refined[0], None, refined[2])
 
     try:
-        refined = (refined[0], refined[1], arrow.get(refined[2]).datetime)
+        refined = (refined[0], refined[1], arrow.get(refined[2], [
+            'YYYY-MM-DDTHH:mm:ss',
+            'YYYY/MM/DD HH:mm:ss Z',
+            'YYYY-MM-DDTHH:mm:ssZZ']).datetime)
     except ParserError:
         logging.warning('unknown format: ' + refined[2])
 
