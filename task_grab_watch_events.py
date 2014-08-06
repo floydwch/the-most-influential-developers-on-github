@@ -23,6 +23,7 @@ db = client['github']
 watch_events = db['watch_events']
 processed_times = db['processed_times']
 defects = db['defects']
+repos = db['repos']
 
 
 def items_insert(collection):
