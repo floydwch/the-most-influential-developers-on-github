@@ -9,11 +9,12 @@ from pymongo.errors import AutoReconnect
 from random import shuffle
 import arrow
 from arrow.parser import ParserError
+from more_itertools import flatten
 
 
-FROM_TIME = datetime(2011, 2, 12, 0)
-TO_TIME = datetime(2014, 8, 1, 22)
-THREAD_NUMBER = 48
+FROM_TIME = datetime(2014, 8, 13, 0)
+TO_TIME = datetime(2014, 8, 14, 0)
+THREAD_NUMBER = 24
 MONGO_MAX_POOL_SIZE = 800
 
 logging.basicConfig(filename='grab.log', level=logging.DEBUG)
@@ -155,6 +156,8 @@ def grab(number):
 
     time_str = (FROM_TIME + timedelta(hours=number)).strftime('%Y-%m-%d-%-H')
 
+    watch_events = []
+
     while True:
         try:
             if processed_times.find(
@@ -170,24 +173,21 @@ def grab(number):
                             map(unicode_data_charset, map(
                                 strip, list(gz_file)))))
 
-                        new_watch_events = filter(
+                        watch_events = filter(
                             is_not_none,
                             map(field_select, filter(
                                 is_watch_event, events)))
 
-                        if new_watch_events:
-                            thread = Thread(
-                                target=items_insert(watch_events),
-                                args=(new_watch_events, ))
-                            thread.start()
-                        else:
+                        if not watch_events:
                             logging.warning(
-                                'new_watch_events is none' + ' -- ' + url)
+                                'watch_events is none' + ' -- ' + url)
 
                         thread = Thread(
                             target=items_insert(processed_times),
                             args=({'time': time_str, 'status': 'ok'}, ))
                         thread.start()
+
+                        break
                 except Exception as e:
                     logging.warning(str(e) + ' -- ' + url)
                     continue
@@ -201,11 +201,13 @@ def grab(number):
         except AutoReconnect:
             pass
 
+        return watch_events
+
 
 numbers = range(int((TO_TIME - FROM_TIME).total_seconds() / 3600))
 shuffle(numbers)
 
 pool = Pool(THREAD_NUMBER)
-pool.map(grab, numbers)
+new_watch_events = flatten(pool.map(grab, numbers))
 pool.close()
 pool.join()
