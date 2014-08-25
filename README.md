@@ -7,31 +7,32 @@ The Most Influential Developers on Github -- Github Data Challenge 2014
 The result is based on limited data(2014/5/23 ~ 2014/8/23) and not on behalf of Github. The rank might be changed if the collected data increased.
 
 #The Result
+## Top 25 Developers in General
 1. visionmedia
-2. mattt
-3. sindresorhus
-4. lexrus
-5. onevcat
-6. 0xced
-7. stormzhang
-8. paulirish
-9. daimajia
-10. turingou
-11. andrew
-12. romaonthego
-13. necolas
-14. krzysztofzablocki
-15. youxiachai
-16. MatthewMueller
+2. sindresorhus
+3. mattt
+4. daimajia
+5. lexrus
+6. onevcat
+7. turingou
+8. stormzhang
+9. youxiachai
+10. dodola
+11. krzysztofzablocki
+12. iiiyu
+13. steipete
+14. Trinea
+15. andrew
+16. myell0w
 17. jeresig
-18. neonichu
-19. cheeaun
-20. igrigorik
-21. zenorocha
-22. goshakkk
-23. mreiferson
-24. fengmk2
-25. tommy351
+18. goshakkk
+19. neonichu
+20. jamiepg1
+21. fengmk2
+22. romaonthego
+23. zenorocha
+24. shunwang
+25. juliangruber
 
 #Abstract
 There are many developers on github, following influential developers is highly beneficial since they spread useful repositories and others.
