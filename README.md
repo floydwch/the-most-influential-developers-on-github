@@ -57,11 +57,12 @@ Every user will get a final score by the sum of all scores from repositories the
 There is a gentle introduction to [Normalized PageRank](https://people.mpi-inf.mpg.de/~kberberi/presentations/2007-www2007.pdf).
 
 # Prerequisites
-* MongoDB 2.6
-* PyMongo 2.7
-* PyGithub 1.25
-* graph-tool 2.2
-* Gevent
-* underscore.py
-* more-itertools
-* arrow
+* [Python 2.7](https://www.python.org/)
+* [MongoDB 2.6](http://www.gevent.org/)
+* [PyMongo 2.7](http://api.mongodb.org/python/current/)
+* [PyGithub 1.25](http://jacquev6.github.io/PyGithub/v1/introduction.html)
+* [graph-tool 2.2](http://graph-tool.skewed.de/)
+* [Gevent](http://www.gevent.org/)
+* [underscore.py](http://serkanyersen.github.io/underscore.py/)
+* [more-itertools](https://pythonhosted.org/more-itertools/api.html)
+* [arrow](http://crsmithdev.com/arrow/)
