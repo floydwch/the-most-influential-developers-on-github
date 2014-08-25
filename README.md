@@ -55,3 +55,13 @@ Every user will get a final score by the sum of all scores from repositories the
 
 ## Normalized PageRank
 There is a gentle introduction to [Normalized PageRank](https://people.mpi-inf.mpg.de/~kberberi/presentations/2007-www2007.pdf).
+
+# Prerequisites
+* MongoDB 2.6
+* PyMongo 2.7
+* PyGithub 1.25
+* graph-tool 2.2
+* Gevent
+* underscore.py
+* more-itertools
+* arrow
