@@ -51,3 +51,4 @@ To diminish the link effect by time, the edges are weighted by a Fibonacci funct
 #Calculate the Influence
 Issue `python task_cal_pagerank` then `python task_cal_influence`.
 Every vertex in a graph has a normalized PageRank score, that is, every user can get a score after the user stars a repository, the score will grow up if the user's followers cascading star the repository.
+Every user will get a final score by the sum of all scores from repositories the user stars.
