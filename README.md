@@ -43,7 +43,7 @@ To collect the data, one can issue `python task_grab_watch_events`.
 
 #Build Graphs
 Issue `python task_gen_events_graphs`.
-In this phrase, every repository's watching event is a 3-tuple(repo, actor, created_time) represented vertex of a directed graph, each vertex direct connects vertices which represent the following users of the vertex which watch the repository relatively early, in the other word, the graph represents the cascade of watching events. 
+In this phrase, every repository's watching event is a 3-tuple(repo, actor, created_time) represented vertex of a directed graph, each vertex direct connects vertices which represent the following users of the vertex which watch the repository relatively early, in the other word, a graph represents the cascade of a repository's watching events. The whole Github's repositories' watching events can form many graphs. 
 
 #Calculate the Influence
 Issue `python task_cal_pagerank` then `python task_cal_influence`.
