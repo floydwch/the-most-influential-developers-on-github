@@ -43,5 +43,5 @@ To collect the data, one can issue `python task_grab_watch_events`.
 Issue `python task_gen_events_graphs`.
 
 #Calculate the Influence
-Issue `python task_cal_influence`.
+Issue `python task_cal_pagerank` then `python task_cal_influence`.
 
