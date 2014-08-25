@@ -41,8 +41,9 @@ This survey employed the well-known PageRank algorithm, the data of watching eve
 The watching events data were collected and extracted the repository's name, actor's name and event issued time respectively. The users' connections were collected from the following relationship.
 To collect the data, one can issue `python task_grab_watch_events`.
 
-#Build the Graph
+#Build Graphs
 Issue `python task_gen_events_graphs`.
+In this phrase, every repository's watching event is a 3-tuple(repo, actor, created_time) represented vertex of a directed graph, each vertex direct connects vertices which represent the following users of the vertex which watch the repository relatively early, in the other word, the graph represents the cascade of watching events. 
 
 #Calculate the Influence
 Issue `python task_cal_pagerank` then `python task_cal_influence`.
