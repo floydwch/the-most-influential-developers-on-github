@@ -48,7 +48,6 @@ In this phrase, every repository's watching event is a 3-tuple(repo, actor, crea
 ## Edge Weight
 To diminish the link effect by time, the edges are weighted by a Fibonacci function, `1.0 / fib(interval + 2)`, the `fib` is the Fibonacci series from 0 and the unit of interval is a day.
 
-
 #Calculate the Influence
 Issue `python task_cal_pagerank` then `python task_cal_influence`.
-
+Every vertex in a graph has a normalized PageRank score, that is, every user can get a score after the user stars a repository, the score will grow up if the user's followers cascading star the repository.
