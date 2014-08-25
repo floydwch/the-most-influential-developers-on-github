@@ -42,5 +42,6 @@ To collect the data, one can issue `python task_grab_watch_events`.
 #Build the Graph
 Issue `python task_gen_events_graphs`.
 
-
+#Calculate the Influence
+Issue `python task_cal_influence`.
 
