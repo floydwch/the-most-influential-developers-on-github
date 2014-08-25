@@ -10,6 +10,8 @@ import gc
 
 gc.disable()
 
+DAMPING = 0.85
+
 graphs = pickle.load(open('pickle/graphs', 'rb'))
 client = MongoClient()
 db = client['github']
@@ -20,6 +22,11 @@ def gen_pagerank_maps(graph):
     pr = pagerank(
         graph, weight=graph.edge_properties['weights_on_edges'])
 
+    dangling_vertices = filter(lambda x: x.out_degree() == 0, graph.vertices())
+    low_pr = (1 / graph.num_vertices()) * (DAMPING + (1 - DAMPING) * sum(
+        map(lambda x: pr[x], dangling_vertices)))
+
+    pr.a /= low_pr
     graph.vertex_properties['pagerank'] = pr
 
     pr_maps = [{
@@ -32,7 +39,8 @@ def gen_pagerank_maps(graph):
 
 
 pool = Pool()
-pagerank_maps = list(flatten(pool.map(gen_pagerank_maps, graphs)))
+pagerank_maps = list(flatten(pool.map(gen_pagerank_maps, filter(
+    lambda x: x.num_vertices(), graphs))))
 pool.close()
 pool.join()
 
