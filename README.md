@@ -38,3 +38,9 @@ This survey employed the well-known PageRank algorithm, the data of watching eve
 #Data Collection
 The watching events data were collected and extracted the repository's name, actor's name and event issued time respectively. The users' connections were collected from the following relationship.
 To collect the data, one can issue `python task_grab_watch_events`.
+
+#Build the Graph
+Issue `python task_gen_events_graphs`.
+
+
+
