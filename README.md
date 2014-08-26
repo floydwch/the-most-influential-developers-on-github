@@ -223,7 +223,6 @@ There is a gentle introduction to [Normalized PageRank](https://people.mpi-inf.m
 * [PyMongo 2.7](http://api.mongodb.org/python/current/)
 * [PyGithub 1.25](http://jacquev6.github.io/PyGithub/v1/introduction.html)
 * [graph-tool 2.2](http://graph-tool.skewed.de/)
-* [NumPy](http://www.numpy.org/)
 * [Gevent](http://www.gevent.org/)
 * [underscore.py](http://serkanyersen.github.io/underscore.py/)
 * [more-itertools](https://pythonhosted.org/more-itertools/api.html)
