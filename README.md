@@ -55,7 +55,7 @@ There is a gentle introduction to [Normalized PageRank](https://people.mpi-inf.m
 * [more-itertools](https://pythonhosted.org/more-itertools/api.html)
 * [arrow](http://crsmithdev.com/arrow/)
 
-## <a name="top-general"></a> Top 25 Influential Developers in General
+# <a name="top-general"></a> Top 25 Influential Developers in General
 1. visionmedia
 2. sindresorhus
 3. daimajia
@@ -82,7 +82,7 @@ There is a gentle introduction to [Normalized PageRank](https://people.mpi-inf.m
 24. zenorocha
 25. dgryski
 
-## <a name="top-python"></a> Top 25 Influential Developers in Python
+# <a name="top-python"></a> Top 25 Influential Developers in Python
 1. fengmk2
 2. jd
 3. kennethreitz
@@ -109,7 +109,7 @@ There is a gentle introduction to [Normalized PageRank](https://people.mpi-inf.m
 24. clowwindy
 25. reduxionist
 
-## <a name="top-js"></a> Top 25 Influential Developers in JavaScript
+# <a name="top-js"></a> Top 25 Influential Developers in JavaScript
 1. sindresorhus
 2. visionmedia
 3. juliangruber
@@ -136,7 +136,7 @@ There is a gentle introduction to [Normalized PageRank](https://people.mpi-inf.m
 24. hughsk
 25. sofish
 
-## <a name="top-go"></a> Top 25 Influential Developers in Go
+# <a name="top-go"></a> Top 25 Influential Developers in Go
 1. visionmedia
 2. dgryski
 3. c4milo
@@ -163,7 +163,7 @@ There is a gentle introduction to [Normalized PageRank](https://people.mpi-inf.m
 24. philips
 25. armon
 
-## <a name="top-ruby"></a> Top 25 Influential Developers in Ruby
+# <a name="top-ruby"></a> Top 25 Influential Developers in Ruby
 1. mattt
 2. goshakkk
 3. JuanitoFatas
@@ -190,7 +190,7 @@ There is a gentle introduction to [Normalized PageRank](https://people.mpi-inf.m
 24. rafalchmiel
 25. rmoriz
 
-## <a name="top-php"></a> Top 25 Influential Developers in PHP
+# <a name="top-php"></a> Top 25 Influential Developers in PHP
 1. Zauberfisch
 2. GrahamCampbell
 3. Ocramius
@@ -217,7 +217,7 @@ There is a gentle introduction to [Normalized PageRank](https://people.mpi-inf.m
 24. fprochazka
 25. Big-Shark
 
-## <a name="top-css"></a> Top 25 Influential Developers in CSS
+# <a name="top-css"></a> Top 25 Influential Developers in CSS
 1. sindresorhus
 2. jeresig
 3. andrew
@@ -244,7 +244,7 @@ There is a gentle introduction to [Normalized PageRank](https://people.mpi-inf.m
 24. josh
 25. qiao
 
-## <a name="top-cplusplus"></a> Top 25 Influential Developers in C++
+# <a name="top-cplusplus"></a> Top 25 Influential Developers in C++
 1. r-lyeh
 2. BYVoid
 3. visionmedia
@@ -271,7 +271,7 @@ There is a gentle introduction to [Normalized PageRank](https://people.mpi-inf.m
 24. stormzhang
 25. tommy351
 
-## <a name="top-java"></a> Top 25 Influential Developers in Java
+# <a name="top-java"></a> Top 25 Influential Developers in Java
 1. daimajia
 2. dodola
 3. stormzhang
@@ -298,7 +298,7 @@ There is a gentle introduction to [Normalized PageRank](https://people.mpi-inf.m
 24. malinkang
 25. MichaelEvans
 
-## <a name="top-objc"></a> Top 25 Influential Developers in Objective-C
+# <a name="top-objc"></a> Top 25 Influential Developers in Objective-C
 1. xhzengAIB
 2. onevcat
 3. myell0w
@@ -325,7 +325,7 @@ There is a gentle introduction to [Normalized PageRank](https://people.mpi-inf.m
 24. sebyddd
 25. uzysjung
 
-## <a name="top-swift"></a> Top 25 Influential Developers in Swift
+# <a name="top-swift"></a> Top 25 Influential Developers in Swift
 1. mattt
 2. lexrus
 3. onevcat
