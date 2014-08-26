@@ -1,9 +1,8 @@
 The Most Influential Developers on Github -- Github Data Challenge 2014
 =======================================================================
 
-#Under Construction
+*Under Construction*
 
-#Abstract
 There are many developers on github, following influential developers is highly beneficial since they spread useful repositories and others.
 This survey employed the well-known PageRank algorithm, the data of watching events from the [GitHub Archive](http://www.githubarchive.org/) and users' connections from Github API to mine the most influential developers on Github.
 
