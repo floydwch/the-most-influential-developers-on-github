@@ -142,6 +142,33 @@ The result is based on limited data(2014/5/23 ~ 2014/8/23) and not on behalf of 
 24. rafalchmiel
 25. rmoriz
 
+## Top 25 Influential Developers in PHP
+1. Zauberfisch
+2. GrahamCampbell
+3. Ocramius
+4. harikt
+5. lsmith77
+6. pminnieur
+7. cfoellmann
+8. javiereguiluz
+9. nikic
+10. drgomesp
+11. philsturgeon
+12. panique
+13. dimensionmedia
+14. pippinsplugins
+15. Ph3nol
+16. norcross
+17. Anahkiasen
+18. ronanguilloux
+19. marcioAlmada
+20. Butochnikov
+21. graste
+22. everzet
+23. xboston
+24. fprochazka
+25. Big-Shark
+
 ## Top 25 Influential Developers in CSS
 1. sindresorhus
 2. jeresig
