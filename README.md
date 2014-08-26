@@ -6,33 +6,193 @@ The Most Influential Developers on Github -- Github Data Challenge 2014
 #Warning
 The result is based on limited data(2014/5/23 ~ 2014/8/23) and not on behalf of Github. The rank might be changed if the collected data increased.
 
-#The Result
-## Top 25 Developers in General
+#The Result (Tentative)
+## Top 25 Influential Developers in General
 1. visionmedia
 2. sindresorhus
 3. mattt
 4. daimajia
 5. lexrus
 6. onevcat
-7. turingou
-8. stormzhang
-9. youxiachai
-10. dodola
-11. krzysztofzablocki
-12. iiiyu
-13. steipete
-14. Trinea
-15. andrew
-16. myell0w
-17. jeresig
-18. goshakkk
-19. neonichu
-20. jamiepg1
-21. fengmk2
-22. romaonthego
-23. zenorocha
-24. shunwang
-25. juliangruber
+7. stormzhang
+8. turingou
+9. krzysztofzablocki
+10. youxiachai
+11. steipete
+12. dodola
+13. jeresig
+14. myell0w
+15. Trinea
+16. fengmk2
+17. romaonthego
+18. zenorocha
+19. iiiyu
+20. andrew
+21. paulirish
+22. juliangruber
+23. sofish
+24. 0xced
+25. c4milo
+
+## Top 25 Developers in Python
+1. fengmk2
+2. turingou
+3. numbbbbb
+4. mitsuhiko
+5. kennethreitz
+6. lexrus
+7. youxiachai
+8. Trinea
+9. stormzhang
+10. rochacbruno
+11. clowwindy
+12. wong2
+13. pydanny
+14. yueyoum
+15. jezdez
+16. daimajia
+17. Yonaba
+18. jacobian
+19. jcarbaugh
+20. vinta
+21. saghul
+22. sofish
+23. tangqiaoboy
+24. avelino
+25. ZoomQuiet
+
+## Top 25 Influential Developers in JavaScript
+1. visionmedia
+2. sindresorhus
+3. paulirish
+4. juliangruber
+5. MatthewMueller
+6. turingou
+7. necolas
+8. sofish
+9. jeresig
+10. zenorocha
+11. stormzhang
+12. cheeaun
+13. igrigorik
+14. hij1nx
+15. fengmk2
+16. yyx990803
+17. youxiachai
+18. tommy351
+19. TooTallNate
+20. andrew
+21. contra
+22. soulwire
+23. tholman
+24. mafintosh
+25. jakiestfu
+
+## Top 25 Influential Developers in Go
+1. visionmedia
+2. c4milo
+3. dgryski
+4. mreiferson
+5. codegangsta
+6. mattn
+7. Unknwon
+8. jeresig
+9. rakyll
+10. titanous
+11. deedubs
+12. nebiros
+13. crosbymichael
+14. juliangruber
+15. daaku
+16. gjohnson
+17. josh
+18. igrigorik
+19. mitchellh
+20. fatih
+21. philips
+22. miyagawa
+23. hsbt
+24. turingou
+25. cloudhead
+
+## Top 25 Influential Developers in Ruby
+1. mattt
+2. krzysztofzablocki
+3. andrew
+4. ayanonagon
+5. ankane
+6. visionmedia
+7. chloerei
+8. onevcat
+9. fredwu
+10. shykes
+11. JakeWharton
+12. josh
+13. supermarin
+14. flyerhzm
+15. lexrus
+16. pengwynn
+17. rkh
+18. miyagawa
+19. akitaonrails
+20. myell0w
+21. Shougo
+22. indragiek
+23. amatsuda
+24. rpplusplus
+25. luislavena
+
+## Top 25 Influential Developers in CSS
+1. sindresorhus
+2. jeresig
+3. andrew
+4. visionmedia
+5. zenorocha
+6. c4milo
+7. paulirish
+8. necolas
+9. pengwynn
+10. cheeaun
+11. turingou
+12. daimajia
+13. pazguille
+14. sofish
+15. whoisjake
+16. youxiachai
+17. umaar
+18. fengmk2
+19. josh
+20. qiao
+21. addyosmani
+22. mdo
+23. passy
+24. tommy351
+25. lifesinger
+
+## Top 23 Influential Developers in Haskell
+1. cloudhead
+2. sdiehl
+3. puffnfresh
+4. 23Skidoo
+5. cartazio
+6. joewalnes
+7. robotlolita
+8. proger
+9. Rickasaurus
+10. soimort
+11. ocharles
+12. 5HT
+13. anubiann00b
+14. xuwei-k
+15. ijuma
+16. sritchie
+17. tanakh
+18. edjiang
+19. jfischoff
+20. andrew
+21. bjin
+22. turingou
+23. chaoslawful
 
 #Abstract
 There are many developers on github, following influential developers is highly beneficial since they spread useful repositories and others.
