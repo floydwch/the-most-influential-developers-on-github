@@ -169,31 +169,6 @@ The result is based on limited data(2014/5/23 ~ 2014/8/23) and not on behalf of 
 24. tommy351
 25. lifesinger
 
-## Top 23 Influential Developers in Haskell
-1. cloudhead
-2. sdiehl
-3. puffnfresh
-4. 23Skidoo
-5. cartazio
-6. joewalnes
-7. robotlolita
-8. proger
-9. Rickasaurus
-10. soimort
-11. ocharles
-12. 5HT
-13. anubiann00b
-14. xuwei-k
-15. ijuma
-16. sritchie
-17. tanakh
-18. edjiang
-19. jfischoff
-20. andrew
-21. bjin
-22. turingou
-23. chaoslawful
-
 #Abstract
 There are many developers on github, following influential developers is highly beneficial since they spread useful repositories and others.
 This survey employed the well-known PageRank algorithm, the data of watching events from the [GitHub Archive](http://www.githubarchive.org/) and users' connections from Github API to mine the most influential developers on Github.
