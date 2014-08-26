@@ -26,6 +26,9 @@ The result is based on limited data(2014/5/23 ~ 2014/8/23) and not on behalf of 
 The watching events data were collected from the [GitHub Archive](http://www.githubarchive.org/) from 2014/5/23 to 2014/8/23 and extracted the repository's name, actor's name and event issued time respectively. The users' connections were collected from the following relationship.
 To collect the data, one can issue `python task_grab_watch_events`. Please make sure the MongoDB has already started, this task will create a database named `github`.
 
+##Github API User Login
+Since the task consumes Github API, please add robot' login names and passwords respectively in the `config.py` under the same directory. 
+
 #Build Graphs
 To build graphs, please make sure the watch events have already collected to MongoDB, and issuing `python task_gen_events_graphs`.
 In this phrase, every repository's watching event is a 3-tuple(repo, actor, created_time) represented vertex of a directed graph, each vertex direct connects vertices which represent the following users of the vertex which watched the repository relatively early, in the other word, a graph represents the cascade of a repository's watching events. The whole Github's repositories' watching events can form many graphs.
