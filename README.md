@@ -34,7 +34,7 @@ The result is based on limited data(2014/5/23 ~ 2014/8/23) and not on behalf of 
 24. 0xced
 25. c4milo
 
-## Top 25 Developers in Python
+## Top 25 Influential Developers in Python
 1. fengmk2
 2. turingou
 3. numbbbbb
