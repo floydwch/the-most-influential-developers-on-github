@@ -325,7 +325,7 @@ The watching events data were collected from the [GitHub Archive](http://www.git
 To collect the data, one can issue `python task_grab_watch_events`.
 
 #Build Graphs
-Issue `python task_gen_events_graphs`.
+To build graphs, please make sure the watch events have already collected to MongoDB, and issuing `python task_gen_events_graphs`.
 In this phrase, every repository's watching event is a 3-tuple(repo, actor, created_time) represented vertex of a directed graph, each vertex direct connects vertices which represent the following users of the vertex which watched the repository relatively early, in the other word, a graph represents the cascade of a repository's watching events. The whole Github's repositories' watching events can form many graphs.
 
 ## Edge Weight
