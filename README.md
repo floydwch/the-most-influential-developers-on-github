@@ -27,7 +27,7 @@ The watching events data were collected from the [GitHub Archive](http://www.git
 To collect the data, one can issue `python task_grab_watch_events`. Please make sure the MongoDB has already started, this task will create a database named `github`.
 
 ##Github API User Login
-Since the task consumes Github API, please add robot' login names and passwords respectively in the `config.py` under the same directory. 
+Since the task consumes Github API, please add robots' login names and passwords respectively in the `config.py` under the same directory. 
 
 #Build Graphs
 To build graphs, please make sure the watch events have already collected to MongoDB, and issuing `python task_gen_events_graphs`.
