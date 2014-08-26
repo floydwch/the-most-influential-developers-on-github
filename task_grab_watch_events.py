@@ -257,6 +257,8 @@ def set_following(events):
 
     for event in events:
         event['following'] = list(flatten(following))
+        event['hireable'] = actor_obj.hireable
+        event['location'] = actor_obj.location
 
     return events
 
