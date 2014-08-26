@@ -7,13 +7,17 @@ The Most Influential Developers on Github -- Github Data Challenge 2014
 The result is based on limited data(2014/5/23 ~ 2014/8/23) and not on behalf of Github. The rank might be changed if the collected data increased.
 
 #The Result (Tentative)
-## [Top 25 Influential Developers in General](#top-general)
-## [Top 25 Influential Developers in Python](#top-python)
-## [Top 25 Influential Developers in JavaScript](#top-js)
-## [Top 25 Influential Developers in JavaScript](#top-js)
-## [Top 25 Influential Developers in JavaScript](#top-js)
-## [Top 25 Influential Developers in JavaScript](#top-js)
-## [Top 25 Influential Developers in JavaScript](#top-js)
+[Top 25 Influential Developers in General](#top-general)
+[Top 25 Influential Developers in Python](#top-python)
+[Top 25 Influential Developers in JavaScript](#top-js)
+[Top 25 Influential Developers in Go](#top-go)
+[Top 25 Influential Developers in Ruby](#top-ruby)
+[Top 25 Influential Developers in PHP](#top-php)
+[Top 25 Influential Developers in CSS](#top-css)
+[Top 25 Influential Developers in C++](#top-cplusplus)
+[Top 25 Influential Developers in Java](#top-java)
+[Top 25 Influential Developers in Objective-C](#top-objc)
+[Top 25 Influential Developers in Swift](#top-swift)
 
 ## <a name="top-general"></a> Top 25 Influential Developers in General
 1. visionmedia
