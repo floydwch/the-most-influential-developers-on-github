@@ -231,7 +231,7 @@ def get_following(actor, get_following, i):
     return map(lambda x: x.login, following_obj)
 
 
-def set_following(events):
+def set_actor_info(events):
     actor = events[0]['actor']
     github_bot_id = random.randrange(len(githubs))
     github = githubs[github_bot_id]
@@ -300,7 +300,7 @@ new_watch_events = filter(lambda x: count[x['repo']] > 1, new_watch_events)
 print 'more than 1 watching event count:', len(new_watch_events)
 
 pool = ThreadPool(24)
-new_watch_events = list(flatten(pool.map(set_following, us.groupBy(
+new_watch_events = list(flatten(pool.map(set_actor_info, us.groupBy(
     new_watch_events, 'actor').values())))
 pool.close()
 pool.join()
