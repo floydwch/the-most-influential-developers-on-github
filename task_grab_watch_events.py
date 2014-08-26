@@ -240,9 +240,7 @@ def set_following(events):
         actor_obj = github.get_user(actor)
     except UnknownObjectException:
         for event in events:
-            event['following'] = []
             event['actor-disabled'] = True
-
         return events
 
     following_count = actor_obj.following
