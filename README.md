@@ -115,33 +115,6 @@ The result is based on limited data(2014/5/23 ~ 2014/8/23) and not on behalf of 
 24. turingou
 25. cloudhead
 
-## Top 25 Influential Developers in Ruby
-1. mattt
-2. krzysztofzablocki
-3. andrew
-4. ayanonagon
-5. ankane
-6. visionmedia
-7. chloerei
-8. onevcat
-9. fredwu
-10. shykes
-11. JakeWharton
-12. josh
-13. supermarin
-14. flyerhzm
-15. lexrus
-16. pengwynn
-17. rkh
-18. miyagawa
-19. akitaonrails
-20. myell0w
-21. Shougo
-22. indragiek
-23. amatsuda
-24. rpplusplus
-25. luislavena
-
 ## Top 25 Influential Developers in CSS
 1. sindresorhus
 2. jeresig
