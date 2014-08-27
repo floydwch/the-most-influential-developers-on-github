@@ -2,7 +2,7 @@
 
 from pymongo import MongoClient
 from underscore import _ as us
-from multiprocessing import Pool
+# from multiprocessing import Pool
 from graph_tool.all import Graph
 import cPickle as pickle
 from fib import fib
@@ -36,17 +36,23 @@ def gen_graph((repo, events)):
     weights_on_edges = graph.new_edge_property('long double')
     graph.edge_properties['weights_on_edges'] = weights_on_edges
 
-    owner_vertex = graph.add_vertex()
-    actors_on_vertices[owner_vertex] = repo.split('/')[0]
-
-    pre_vertices = []
+    # pre_vertices = []
     pre_events_map = {}
     pre_vertices_map = {}
+
+    owner_vertex = graph.add_vertex()
+    owner = repo.split('/')[0]
+    actors_on_vertices[owner_vertex] = owner
+    pre_vertices_map[owner] = owner_vertex
 
     events = sorted(events, key=lambda x: x['created_at'])
 
     for event in events:
         actor = event['actor']
+
+        if pre_events_map[actor]:
+            continue
+
         created_at = event['created_at']
         following = set(event['following'])
         commons = following.intersection(pre_vertices_map.keys())
@@ -56,7 +62,7 @@ def gen_graph((repo, events)):
         vertex = graph.add_vertex()
         events_on_vertices[vertex] = event
         actors_on_vertices[vertex] = actor
-        pre_vertices.append(vertex)
+        # pre_vertices.append(vertex)
         pre_vertices_map[actor] = vertex
 
         if len(commons) == 0:
@@ -72,13 +78,8 @@ def gen_graph((repo, events)):
     return graph
 
 
-pool = Pool()
-graphs = pool.map(gen_graph, filter(
-    lambda x: len(x[1]) > 999,
-    us.groupBy(list(watch_events.find(
-        {'repo-disabled': {'$exists': False}})), 'repo').items()))
-pool.close()
-pool.join()
+graphs = map(gen_graph, us.groupBy(list(watch_events.find(
+    {'repo-disabled': {'$exists': False}})), 'repo').items())
 
 print 'gen completed'
 print 'graph count:', len(graphs)
