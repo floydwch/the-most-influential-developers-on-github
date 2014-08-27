@@ -31,8 +31,7 @@ def gen_pagerank_maps(graph):
     return pr_maps
 
 
-pagerank_maps = list(flatten(map(gen_pagerank_maps, filter(
-    lambda x: x.num_edges(), graphs))))
+pagerank_maps = list(flatten(map(gen_pagerank_maps, graphs)))
 
 pickle.dump(graphs, open('pickle/graphs', 'wb'), True)
 pageranks.insert(pagerank_maps)
