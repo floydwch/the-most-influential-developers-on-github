@@ -50,7 +50,7 @@ def gen_graph((repo, events)):
     for event in events:
         actor = event['actor']
 
-        if pre_events_map[actor]:
+        if actor in pre_events_map:
             continue
 
         created_at = event['created_at']
