@@ -36,6 +36,9 @@ def gen_graph((repo, events)):
     weights_on_edges = graph.new_edge_property('long double')
     graph.edge_properties['weights_on_edges'] = weights_on_edges
 
+    owner_vertex = graph.add_vertex()
+    actors_on_vertices[owner_vertex] = repo.split('/')[0]
+
     pre_vertices = []
     pre_events_map = {}
     pre_vertices_map = {}
@@ -55,6 +58,11 @@ def gen_graph((repo, events)):
         actors_on_vertices[vertex] = actor
         pre_vertices.append(vertex)
         pre_vertices_map[actor] = vertex
+
+        if len(commons) == 0:
+            owner_vertex
+            edge = graph.add_edge(vertex, owner_vertex)
+            weights_on_edges[edge] = 1.0
 
         for pre_actor in commons:
             edge = graph.add_edge(vertex, pre_vertices_map[pre_actor])
