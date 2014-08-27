@@ -3,7 +3,6 @@
 from graph_tool.centrality import pagerank
 from pymongo import MongoClient
 from more_itertools import flatten
-from multiprocessing import Pool
 import cPickle as pickle
 import gc
 
@@ -32,11 +31,8 @@ def gen_pagerank_maps(graph):
     return pr_maps
 
 
-pool = Pool()
-pagerank_maps = list(flatten(pool.map(gen_pagerank_maps, filter(
-    lambda x: x.num_vertices(), graphs))))
-pool.close()
-pool.join()
+pagerank_maps = list(flatten(map(gen_pagerank_maps, filter(
+    lambda x: x.num_edges(), graphs))))
 
 pickle.dump(graphs, open('pickle/graphs', 'wb'), True)
 pageranks.insert(pagerank_maps)
