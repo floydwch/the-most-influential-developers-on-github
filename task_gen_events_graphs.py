@@ -60,7 +60,6 @@ def gen_graph((repo, events)):
         pre_vertices_map[actor] = vertex
 
         if len(commons) == 0:
-            owner_vertex
             edge = graph.add_edge(vertex, owner_vertex)
             weights_on_edges[edge] = 1.0
 
