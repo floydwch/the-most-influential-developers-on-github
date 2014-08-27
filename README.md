@@ -1,15 +1,14 @@
-The Most Influential Developers on Github -- Github Data Challenge 2014
-=======================================================================
+# The Most Influential Developers on Github -- Github Data Challenge 2014
 
 *Under Construction*
 
 There are many developers on github, following influential developers is highly beneficial since they usually spread promising repositories.
 This survey employed the well-known PageRank algorithm, the data of watching events from the [GitHub Archive](http://www.githubarchive.org/) and users' connections from Github API to mine the most influential developers on Github.
 
-#Disclaimer
+## Disclaimer
 The result is based on limited data(2014/5/23 ~ 2014/8/23) and not on behalf of Github. The rank might be changed in case the collected data increased.
 
-#The Result (Tentative)
+## The Result (Tentative)
 * [Top 25 Influential Developers in General](#top-general)
 * [Top 25 Influential Developers in Python](#top-python)
 * [Top 25 Influential Developers in JavaScript](#top-js)
@@ -22,29 +21,29 @@ The result is based on limited data(2014/5/23 ~ 2014/8/23) and not on behalf of 
 * [Top 25 Influential Developers in Objective-C](#top-objc)
 * [Top 25 Influential Developers in Swift](#top-swift)
 
-#Data Collection
+## Data Collection
 The watching events data were collected from the [GitHub Archive](http://www.githubarchive.org/) from 2014/5/23 to 2014/8/23 and extracted the repository's name, actor's name and event issued time respectively. The users' connections were collected from the following relationship.
 To collect the data, one can issue `python task_grab_watch_events`. Please make sure the MongoDB has already started, this task will create a database named `github`.
 
-##Github API User Login
+### Github API User Login
 Since the task consumes Github API, please add robots' login names and passwords respectively in the `config.py` under the same directory. 
 
-#Build Graphs
+## Build Graphs
 To build graphs, please make sure the watch events have already collected to MongoDB, and issuing `python task_gen_events_graphs`.
 In this phrase, every repository's watching event is a 3-tuple(repo, actor, created_time) represented vertex of a directed graph, each vertex direct connects vertices which represent the following users of the vertex which watched the repository relatively early, in the other word, a graph represents the cascade of a repository's watching events. The whole Github's repositories' watching events  form many graphs.
 
-## Edge Weight
+### Edge Weight
 To diminish the link effect by time, the edges are weighted by a Fibonacci function, `1.0 / fib(interval + 2)`, the `fib` is the Fibonacci series from 0 and the unit of interval is a day.
 
-#Calculate the Influence
+## Calculate the Influence
 Issue `python task_cal_pagerank` then `python task_cal_influence`.
 Every vertex in a graph has a normalized PageRank score, that is, every user can get a score if the user stars a repository, the score grows up when the user's followers cascading star the repository.
 Every user will get a final score by the sum of all scores which are great than the unit score `1` from repositories the user stars, then we can rank them by the final scores.
 
-## Normalized PageRank
+### Normalized PageRank
 There is a gentle introduction to [Normalized PageRank](https://people.mpi-inf.mpg.de/~kberberi/presentations/2007-www2007.pdf).
 
-# Prerequisites
+## Prerequisites
 * [Python 2.7](https://www.python.org/)
 * [MongoDB 2.6](http://www.gevent.org/)
 * [PyMongo 2.7](http://api.mongodb.org/python/current/)
@@ -56,7 +55,7 @@ There is a gentle introduction to [Normalized PageRank](https://people.mpi-inf.m
 * [more-itertools](https://pythonhosted.org/more-itertools/api.html)
 * [arrow](http://crsmithdev.com/arrow/)
 
-# <a name="top-general"></a> Top 25 Influential Developers in General
+## <a name="top-general"></a> Top 25 Influential Developers in General
 1. visionmedia
 2. sindresorhus
 3. daimajia
@@ -83,7 +82,7 @@ There is a gentle introduction to [Normalized PageRank](https://people.mpi-inf.m
 24. zenorocha
 25. dgryski
 
-# <a name="top-python"></a> Top 25 Influential Developers in Python
+## <a name="top-python"></a> Top 25 Influential Developers in Python
 1. fengmk2
 2. jd
 3. kennethreitz
@@ -110,7 +109,7 @@ There is a gentle introduction to [Normalized PageRank](https://people.mpi-inf.m
 24. clowwindy
 25. reduxionist
 
-# <a name="top-js"></a> Top 25 Influential Developers in JavaScript
+## <a name="top-js"></a> Top 25 Influential Developers in JavaScript
 1. sindresorhus
 2. visionmedia
 3. juliangruber
@@ -137,7 +136,7 @@ There is a gentle introduction to [Normalized PageRank](https://people.mpi-inf.m
 24. hughsk
 25. sofish
 
-# <a name="top-go"></a> Top 25 Influential Developers in Go
+## <a name="top-go"></a> Top 25 Influential Developers in Go
 1. visionmedia
 2. dgryski
 3. c4milo
@@ -164,7 +163,7 @@ There is a gentle introduction to [Normalized PageRank](https://people.mpi-inf.m
 24. philips
 25. armon
 
-# <a name="top-ruby"></a> Top 25 Influential Developers in Ruby
+## <a name="top-ruby"></a> Top 25 Influential Developers in Ruby
 1. mattt
 2. goshakkk
 3. JuanitoFatas
@@ -191,7 +190,7 @@ There is a gentle introduction to [Normalized PageRank](https://people.mpi-inf.m
 24. rafalchmiel
 25. rmoriz
 
-# <a name="top-php"></a> Top 25 Influential Developers in PHP
+## <a name="top-php"></a> Top 25 Influential Developers in PHP
 1. Zauberfisch
 2. GrahamCampbell
 3. Ocramius
@@ -218,7 +217,7 @@ There is a gentle introduction to [Normalized PageRank](https://people.mpi-inf.m
 24. fprochazka
 25. Big-Shark
 
-# <a name="top-css"></a> Top 25 Influential Developers in CSS
+## <a name="top-css"></a> Top 25 Influential Developers in CSS
 1. sindresorhus
 2. jeresig
 3. andrew
@@ -245,7 +244,7 @@ There is a gentle introduction to [Normalized PageRank](https://people.mpi-inf.m
 24. josh
 25. qiao
 
-# <a name="top-cplusplus"></a> Top 25 Influential Developers in C++
+## <a name="top-cplusplus"></a> Top 25 Influential Developers in C++
 1. r-lyeh
 2. BYVoid
 3. visionmedia
@@ -272,7 +271,7 @@ There is a gentle introduction to [Normalized PageRank](https://people.mpi-inf.m
 24. stormzhang
 25. tommy351
 
-# <a name="top-java"></a> Top 25 Influential Developers in Java
+## <a name="top-java"></a> Top 25 Influential Developers in Java
 1. daimajia
 2. dodola
 3. stormzhang
@@ -299,7 +298,7 @@ There is a gentle introduction to [Normalized PageRank](https://people.mpi-inf.m
 24. malinkang
 25. MichaelEvans
 
-# <a name="top-objc"></a> Top 25 Influential Developers in Objective-C
+## <a name="top-objc"></a> Top 25 Influential Developers in Objective-C
 1. xhzengAIB
 2. onevcat
 3. myell0w
@@ -326,7 +325,7 @@ There is a gentle introduction to [Normalized PageRank](https://people.mpi-inf.m
 24. sebyddd
 25. uzysjung
 
-# <a name="top-swift"></a> Top 25 Influential Developers in Swift
+## <a name="top-swift"></a> Top 25 Influential Developers in Swift
 1. mattt
 2. lexrus
 3. onevcat
