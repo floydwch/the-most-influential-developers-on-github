@@ -241,6 +241,9 @@ def set_actor_info(events):
     except UnknownObjectException:
         for event in events:
             event['actor-disabled'] = True
+            event['following'] = []
+            event['hireable'] = ''
+            event['location'] = ''
         return events
 
     following_count = actor_obj.following
