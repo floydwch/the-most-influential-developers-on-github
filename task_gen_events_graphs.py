@@ -71,7 +71,8 @@ def gen_graph((repo, events)):
 
         for pre_actor in commons:
             edge = graph.add_edge(vertex, pre_vertices_map[pre_actor])
-            interval = (created_at - pre_events_map[actor]['created_at']).days
+            interval =\
+                (created_at - pre_events_map[pre_actor]['created_at']).days
             weight = 1.0 / fib(interval + 2)
             weights_on_edges[edge] = weight
 
