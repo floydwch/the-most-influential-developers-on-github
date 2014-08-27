@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 
 from underscore import _ as us
+from funcy import group_by
 from pymongo import MongoClient
 import operator
+from multiprocessing import Pool
 import gc
 
 
@@ -14,24 +16,57 @@ pageranks = db['pageranks']
 influence = db['influence']
 
 
+def max_record(records):
+    return max(records, key=lambda x: x['centrality'])
+
+
 def cal_influence_ranking((actor, records)):
-    return (actor, sum(us.pluck(records, 'centrality')))
+    return (actor,
+            sum(filter(lambda x: x > 1, us.pluck(
+                map(max_record,
+                    group_by(lambda x: x['repo'], records).values()),
+                'centrality'))))
 
 
-all_influence_ranks = sorted(
-    map(cal_influence_ranking,
-        us.groupBy(list(pageranks.find()), 'actor').items()),
-    key=operator.itemgetter(1), reverse=True)
+def influence_ranks(spec):
+    pool = Pool()
+    ranks = sorted(
+        pool.map(cal_influence_ranking, us.groupBy(
+            list(pageranks.find(spec)), 'actor').items()),
+        key=operator.itemgetter(1), reverse=True)
 
-influence.insert({
-    'field': 'all',
-    'ranks': all_influence_ranks
-})
+    pool.close()
+    pool.join()
 
-print 'top 25:'
-for i, (actor, pagerank) in enumerate(all_influence_ranks[:25]):
-    print str(i + 1) + '.', actor, pagerank
+    return ranks
 
-print 'top 25(hide score):'
-for i, (actor, pagerank) in enumerate(all_influence_ranks[:25]):
-    print str(i + 1) + '.', actor
+
+influence_specs = {
+    'General': {},
+    'JavaScript': {'language': 'JavaScript'},
+    'Python': {'language': 'Python'},
+    'CSS': {'language': 'CSS'},
+    'Ruby': {'language': 'Ruby'},
+    'Go': {'language': 'Go'},
+    'Objective-C': {'language': 'Objective-C'},
+    'Swift': {'language': 'Swift'},
+    'Java': {'language': 'Java'},
+    'C++': {'language': 'C++'},
+    'PHP': {'language': 'PHP'}
+}
+
+for field, spec in influence_specs.items():
+    ranks = influence_ranks(spec)
+
+    influence.insert({
+        'field': field,
+        'ranks': ranks
+    })
+
+    print '%s top 25:' % field
+    for i, (actor, pagerank) in enumerate(ranks[:25]):
+        print str(i + 1) + '.', actor, pagerank
+
+    print '%s top 25(hide score):' % field
+    for i, (actor, pagerank) in enumerate(ranks[:25]):
+        print str(i + 1) + '.', actor
