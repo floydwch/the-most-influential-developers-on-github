@@ -40,10 +40,10 @@ def gen_graph((repo, events)):
     pre_events_map = {}
     pre_vertices_map = {}
 
-    owner_vertex = graph.add_vertex()
-    owner = repo.split('/')[0]
-    actors_on_vertices[owner_vertex] = owner
-    pre_vertices_map[owner] = owner_vertex
+    # owner_vertex = graph.add_vertex()
+    # owner = repo.split('/')[0]
+    # actors_on_vertices[owner_vertex] = owner
+    # pre_vertices_map[owner] = owner_vertex
 
     events = sorted(events, key=lambda x: x['created_at'])
 
@@ -65,9 +65,9 @@ def gen_graph((repo, events)):
         # pre_vertices.append(vertex)
         pre_vertices_map[actor] = vertex
 
-        if len(commons) == 0:
-            edge = graph.add_edge(vertex, owner_vertex)
-            weights_on_edges[edge] = 1.0
+        # if len(commons) == 0:
+        #     edge = graph.add_edge(vertex, owner_vertex)
+        #     weights_on_edges[edge] = 1.0
 
         for pre_actor in commons:
             edge = graph.add_edge(vertex, pre_vertices_map[pre_actor])
