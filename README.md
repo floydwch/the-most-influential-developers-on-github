@@ -52,6 +52,7 @@ There is a gentle introduction to [Normalized PageRank](https://people.mpi-inf.m
 * [graph-tool 2.2](http://graph-tool.skewed.de/)
 * [Gevent](http://www.gevent.org/)
 * [underscore.py](http://serkanyersen.github.io/underscore.py/)
+* [funcy](https://github.com/Suor/funcy)
 * [more-itertools](https://pythonhosted.org/more-itertools/api.html)
 * [arrow](http://crsmithdev.com/arrow/)
 
