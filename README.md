@@ -3,7 +3,7 @@
 *In Progress*
 
 There are many developers on Github, following influential developers is highly beneficial because they usually spread promising repositories.
-This survey employed the well-known PageRank algorithm, the data of watching events from the [GitHub Archive](http://www.githubarchive.org/) and users' following relationships from Github API to mine the most influential developers on Github.
+This survey employed the well-known PageRank algorithm, the data of watching events from the [GitHub Archive](http://www.githubarchive.org/) and users' following relationships from the Github API to mine the most influential developers on Github.
 
 ## Disclaimer
 The result is based on limited data(2014/5/23 ~ 2014/8/23) and not on behalf of Github. The rank might be changed in case the collected data increased.
@@ -22,11 +22,11 @@ The result is based on limited data(2014/5/23 ~ 2014/8/23) and not on behalf of 
 * [Top 25 Influential Developers in Swift](#top-swift)
 
 ## Data Collection
-The watching events data were collected from the [GitHub Archive](http://www.githubarchive.org/) from 2014/5/23 to 2014/8/23, the repository's name, actor's name and event issued time were extracted respectively. The users' following relationships were collected from Github API.
+The watching events data were collected from the [GitHub Archive](http://www.githubarchive.org/) from 2014/5/23 to 2014/8/23, the repository's name, the actor's name and the event issued time were extracted respectively. The users' following relationships were collected from Github API.
 To collect the data, issuing `python task_grab_watch_events`. Please make sure the MongoDB has already started, this task will create a database named `github`.
 
 ### Github API User Login
-Since the task consumes Github API, please add robots' login names and passwords respectively in the `config.py` under the same directory. 
+Since the task consumes the Github API, please add robots' login names and passwords respectively in the `config.py` under the same directory. 
 
 ## Build Graphs
 To build graphs, please make sure the watch events have already collected to MongoDB and issue `python task_gen_events_graphs`.
