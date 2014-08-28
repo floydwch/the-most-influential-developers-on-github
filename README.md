@@ -45,7 +45,7 @@ PageRank is a link analysis algorithm and it assigns a numerical weighting to ea
 In this survey, the elements are of the watching events and the links are of the following relationship among the actors.
 
 ### Normalized PageRank
-Since the original PageRank is specific to a single graph, we should find a way to combine PageRanks from multiple graphs, that is, the PageRank need to be normalized.
+Since the original PageRank is specific to a single graph, we should find a way to combine PageRanks from multiple graphs, that is, the PageRank has to be normalized.
 There is a gentle introduction to [Normalized PageRank](https://people.mpi-inf.mpg.de/~kberberi/presentations/2007-www2007.pdf).
 
 ## Prerequisites
