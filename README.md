@@ -3,6 +3,7 @@
 *In Progress*
 
 There are many developers on Github, following influential developers is highly beneficial because they usually spread promising repositories.
+You might agree the influential developers have the powers to promote repositories on Github by starring, their followers may star successively. 
 This survey employed the well-known PageRank algorithm, the data of watching events from the [GitHub Archive](http://www.githubarchive.org/) and users' following relationships from the Github API to mine the most influential developers on Github.
 
 ## Disclaimer
