@@ -22,8 +22,8 @@ The result is based on limited data(2014/5/23 ~ 2014/8/23) and not on behalf of 
 * [Top 25 Influential Developers in Swift](#top-swift)
 
 ## Data Collection
-The watching events data were collected from the [GitHub Archive](http://www.githubarchive.org/) from 2014/5/23 to 2014/8/23 and extracted the repository's name, actor's name and event issued time respectively. The users' connections were collected from the following relationship.
-To collect the data, one can issue `python task_grab_watch_events`. Please make sure the MongoDB has already started, this task will create a database named `github`.
+The watching events data were collected from the [GitHub Archive](http://www.githubarchive.org/) from 2014/5/23 to 2014/8/23,  extracting the repository's name, actor's name and event issued time respectively. The users' connections were collected from the Github API provided users' following relationship.
+To collect the data, issuing `python task_grab_watch_events`. Please make sure the MongoDB has already started, this task will create a database named `github`.
 
 ### Github API User Login
 Since the task consumes Github API, please add robots' login names and passwords respectively in the `config.py` under the same directory. 
