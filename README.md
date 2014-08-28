@@ -63,7 +63,7 @@ There is a gentle introduction to the [Normalized PageRank](https://people.mpi-i
 * [more-itertools](https://pythonhosted.org/more-itertools/api.html)
 * [arrow](http://crsmithdev.com/arrow/)
 
-## System Prerequisites
+## Recommended System Requirements
 * Data Collection
   - An Amazon EC2 r3.2xlarge instance
   - Ubuntu 14.04
