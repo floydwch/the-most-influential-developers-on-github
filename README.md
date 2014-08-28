@@ -42,7 +42,7 @@ We can score the influence among users by PageRank since the cascade of watching
 
 ### PageRank
 [PageRank](http://en.wikipedia.org/wiki/PageRank) is a link analysis algorithm and it assigns a numerical weight to each element of a hyperlinked set of documents, such as the World Wide Web, with the purpose of "measuring" its relative importance within the set.
-In this survey, the elements are of the watching events and the links are of the following relationship among the actors.
+In this survey, the elements are of the watching events and the links are of the following relationship among actors.
 
 ### Normalized PageRank
 Since the original PageRank is specific to a single graph, we have to find a way to combine PageRanks from multiple graphs, that is, the PageRank has to be normalized. The PageRank can be normalized by dividing the original PageRank by the least PageRank.
