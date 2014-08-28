@@ -29,7 +29,7 @@ To collect the data, issuing `python task_grab_watch_events`. Please make sure t
 Since the task consumes Github API, please add robots' login names and passwords respectively in the `config.py` under the same directory. 
 
 ## Build Graphs
-To build graphs, please make sure the watch events have already collected to MongoDB, and issuing `python task_gen_events_graphs`.
+To build graphs, please make sure the watch events have already collected to MongoDB and issue `python task_gen_events_graphs`.
 Every repository's watching event can be represented a 3-tuple vertex likes (event's created time, repository's name, actor's name), each vertex has directed edges with its following users' watching events formed vertices which are also stargazers of the repository   but prior to the user, in the other words, a graph represents the cascade of a repository's watching events. The whole Github's repositories' watching events form many graphs.
 
 ### Edge Weighting
