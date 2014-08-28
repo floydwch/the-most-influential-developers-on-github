@@ -33,7 +33,7 @@ To build graphs, please make sure the watch events have already collected to Mon
 Every repository's watching event can be represented a 3-tuple vertex likes (event's created time, repository's name, actor's name), each vertex has directed edges with its following users' watching events formed vertices which are also stargazer of the repository   but prior to the user, in the other words, a graph represents the cascade of a repository's watching events. The whole Github's repositories' watching events form many graphs.
 
 ### Edge Weight
-To diminish the link effect by time, the edges are weighted by a Fibonacci function, `1.0 / fib(interval + 2)`, the `fib` is the Fibonacci series from 0 and the unit of interval is a day.
+To diminish the linkage effect by time, the edges are weighted by a Fibonacci function, `1.0 / fib(interval + 2)`, the `fib` is the Fibonacci series from 0 and the unit of interval is a day. Longer the events' interval, lesser the connection is between events.
 
 ## Calculate the Influence
 Issue `python task_cal_pagerank` then `python task_cal_influence`.
