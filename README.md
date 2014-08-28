@@ -64,10 +64,10 @@ There is a gentle introduction to [Normalized PageRank](https://people.mpi-inf.m
 * [arrow](http://crsmithdev.com/arrow/)
 
 ## System Prerequisites
-- Data Collection
+* Data Collection
   - An Amazon EC2 r3.2xlarge instance
   - Ubuntu 14.04
-- Build Graphs
+* Build Graphs
   - An Amazon EC2 r3.4xlarge instance
   - Ubuntu 14.04
 
