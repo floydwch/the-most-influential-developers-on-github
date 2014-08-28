@@ -2,8 +2,8 @@
 
 *Under Construction*
 
-There are many developers on github, following influential developers is highly beneficial since they usually spread promising repositories.
-This survey employed the well-known PageRank algorithm, the data of watching events from the [GitHub Archive](http://www.githubarchive.org/) and users' connections from Github API to mine the most influential developers on Github.
+There are many developers on Github, following influential developers is highly beneficial because they usually spread promising repositories.
+This survey employed the well-known PageRank algorithm, the data of watching events from the [GitHub Archive](http://www.githubarchive.org/) and users' following relationships from Github API to mine the most influential developers on Github.
 
 ## Disclaimer
 The result is based on limited data(2014/5/23 ~ 2014/8/23) and not on behalf of Github. The rank might be changed in case the collected data increased.
