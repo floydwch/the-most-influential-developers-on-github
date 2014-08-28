@@ -51,7 +51,7 @@ There is a gentle introduction to [Normalized PageRank](https://people.mpi-inf.m
 ## Data Insights
 *In Progress*
 
-## Prerequisites
+## Software Prerequisites
 * [Python 2.7](https://www.python.org/)
 * [MongoDB 2.6](http://www.gevent.org/)
 * [PyMongo 2.7](http://api.mongodb.org/python/current/)
@@ -62,6 +62,14 @@ There is a gentle introduction to [Normalized PageRank](https://people.mpi-inf.m
 * [funcy](https://github.com/Suor/funcy)
 * [more-itertools](https://pythonhosted.org/more-itertools/api.html)
 * [arrow](http://crsmithdev.com/arrow/)
+
+## System Prerequisites
+- Data Collection
+  - An Amazon EC2 r3.2xlarge instance
+  - Ubuntu 14.04
+- Build Graphs
+  - An Amazon EC2 r3.4xlarge instance
+  - Ubuntu 14.04
 
 ## <a name="top-general"></a> Top 25 Influential Developers in General
 1. visionmedia
