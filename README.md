@@ -1,6 +1,6 @@
 # The Most Influential Developers on Github -- Github Data Challenge 2014
 
-*Under Construction*
+*In Progress*
 
 There are many developers on Github, following influential developers is highly beneficial because they usually spread promising repositories.
 This survey employed the well-known PageRank algorithm, the data of watching events from the [GitHub Archive](http://www.githubarchive.org/) and users' following relationships from Github API to mine the most influential developers on Github.
@@ -46,6 +46,9 @@ In this survey, the elements are of the watching events and the links are of the
 ### Normalized PageRank
 Since the original PageRank is specific to a single graph, we should find a way to combine PageRanks from multiple graphs, that is, the PageRank has to be normalized.
 There is a gentle introduction to [Normalized PageRank](https://people.mpi-inf.mpg.de/~kberberi/presentations/2007-www2007.pdf).
+
+## Data Insights
+*In Progress*
 
 ## Prerequisites
 * [Python 2.7](https://www.python.org/)
