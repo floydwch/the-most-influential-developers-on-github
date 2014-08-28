@@ -37,7 +37,7 @@ The actor has less possibility to influence followers by time, to diminish the l
 
 ## Calculate the Influence
 Issue `python task_cal_pagerank` then `python task_cal_influence`.
-We can score the influence among users since the cascade of watching events can be represented as a directed graph, and so forth we can get the influence of a user by combining scores the user got from involved graphs.
+We can score the influence among users since the cascade of watching events can be represented as a directed graph, and so forth we can get the influence of a user by combining scores which are the user got from involved graphs.
 
 ### PageRank
 [PageRank](http://en.wikipedia.org/wiki/PageRank) is a link analysis algorithm and it assigns a numerical weighting to each element of a hyperlinked set of documents, such as the World Wide Web, with the purpose of "measuring" its relative importance within the set.
