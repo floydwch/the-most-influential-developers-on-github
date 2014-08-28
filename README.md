@@ -40,7 +40,7 @@ Issue `python task_cal_pagerank` then `python task_cal_influence`.
 We can score the influence among users since the cascade of watching events can be represented as a directed graph, and so forth we can get the influence of a user by combining scores which are the user got from involved graphs.
 
 ### PageRank
-[PageRank](http://en.wikipedia.org/wiki/PageRank) is a link analysis algorithm and it assigns a numerical weighting to each element of a hyperlinked set of documents, such as the World Wide Web, with the purpose of "measuring" its relative importance within the set.
+[PageRank](http://en.wikipedia.org/wiki/PageRank) is a link analysis algorithm and it assigns a numerical weight to each element of a hyperlinked set of documents, such as the World Wide Web, with the purpose of "measuring" its relative importance within the set.
 In this survey, the elements are of the watching events and the links are of the following relationship among the actors.
 
 ### Normalized PageRank
