@@ -40,7 +40,7 @@ Issue `python task_cal_pagerank` then `python task_cal_influence`.
 Every vertex in a graph has a normalized PageRank score, that is, every user can get a score if the user stars a repository, the score grows up when the user's followers cascading star the repository.
 Every user will get a final score by the sum of all scores which are great than the unit score `1` from repositories the user stars, then we can rank them by the final scores.
 
-## PageRank
+### PageRank
 PageRank is a link analysis algorithm and it assigns a numerical weighting to each element of a hyperlinked set of documents, such as the World Wide Web, with the purpose of "measuring" its relative importance within the set.
 In this survey, the elements are of the watching events and the links are of the following relationship among the actors.
 
