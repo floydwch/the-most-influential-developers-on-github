@@ -44,29 +44,46 @@ def influence_ranks(spec):
 influence_specs = {
     'General': {},
     'JavaScript': {'language': 'JavaScript'},
-    'Python': {'language': 'Python'},
     'CSS': {'language': 'CSS'},
+    'Python': {'language': 'Python'},
     'Ruby': {'language': 'Ruby'},
     'Go': {'language': 'Go'},
+    'PHP': {'language': 'PHP'},
+    'Shell': {'language': 'Shell'},
+    'Perl': {'language': 'Perl'},
     'Objective-C': {'language': 'Objective-C'},
     'Swift': {'language': 'Swift'},
     'Java': {'language': 'Java'},
     'C++': {'language': 'C++'},
-    'PHP': {'language': 'PHP'}
+    'C#': {'language': 'C#'},
+    'C': {'language': 'C'},
+    'Haskell': {'language': 'Haskell'},
+    'Scala': {'language': 'Scala'},
+    'Erlang': {'language': 'Erlang'},
+    'Clojure': {'language': 'Clojure'}
 }
 
-for field, spec in influence_specs.items():
-    ranks = influence_ranks(spec)
 
-    influence.insert({
-        'field': field,
-        'ranks': ranks
-    })
+def main():
+    for field, spec in influence_specs.items():
+        ranks = influences.find({'field': field}).sort('ranks', ASCENDING)
 
-    print '%s top 25:' % field
-    for i, (actor, pagerank) in enumerate(ranks[:25]):
-        print str(i + 1) + '.', actor, pagerank
+        if not ranks:
+            ranks = influence_ranks(spec)
 
-    print '%s top 25(hide score):' % field
-    for i, (actor, pagerank) in enumerate(ranks[:25]):
-        print str(i + 1) + '.', actor
+            influences.insert({
+                'field': field,
+                'ranks': ranks
+            })
+
+        print '%s top 25:' % field
+        for i, (actor, pagerank) in enumerate(ranks[:25]):
+            print str(i + 1) + '.', actor, pagerank
+
+        print '%s top 25(hide score):' % field
+        for i, (actor, pagerank) in enumerate(ranks[:25]):
+            print str(i + 1) + '.', actor
+
+
+if __name__ == '__main__':
+    main()
