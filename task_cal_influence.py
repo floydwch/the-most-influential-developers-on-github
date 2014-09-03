@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from underscore import _ as us
-from funcy import group_by
-from pymongo import MongoClient
+from pymongo import MongoClient, ASCENDING
 import operator
 from multiprocessing import Pool
 import gc
@@ -13,19 +12,20 @@ gc.disable()
 client = MongoClient()
 db = client['github']
 pageranks = db['pageranks']
-influence = db['influence']
+influences = db['influences']
 
 
-def max_record(records):
-    return max(records, key=lambda x: x['centrality'])
+# def max_record(records):
+#     return max(records, key=lambda x: x['pagerank'])
 
 
 def cal_influence_ranking((actor, records)):
-    return (actor,
-            sum(filter(lambda x: x > 1, us.pluck(
-                map(max_record,
-                    group_by(lambda x: x['repo'], records).values()),
-                'centrality'))))
+    # return (actor,
+    #         sum(filter(lambda x: x > 1, us.pluck(
+    #             map(max_record,
+    #                 group_by(lambda x: x['repo'], records).values()),
+    #             'pagerank'))))
+    return (actor, sum(filter(lambda x: x > 1, us.pluck(records, 'pagerank'))))
 
 
 def influence_ranks(spec):
