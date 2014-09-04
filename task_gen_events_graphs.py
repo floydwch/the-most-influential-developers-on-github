@@ -4,16 +4,12 @@ from pymongo import MongoClient
 from underscore import _ as us
 # from multiprocessing import Pool
 from graph_tool.all import Graph
-import cPickle as pickle
+import pickle
 from fib import fib
 import gc
 
 
 gc.disable()
-
-client = MongoClient()
-db = client['github']
-watch_events = db['watch_events']
 
 
 def gen_graph((repo, events)):
@@ -84,12 +80,21 @@ def gen_graph((repo, events)):
     return graph
 
 
-graphs = map(gen_graph, us.groupBy(list(watch_events.find(
-    {'repo-disabled': {'$exists': False}})), 'repo').items())
+def main():
+    client = MongoClient()
+    db = client['github']
+    watch_events = db['watch_events']
 
-print 'gen completed'
-print 'graph count:', len(graphs)
+    graphs = map(gen_graph, us.groupBy(list(watch_events.find(
+        {'repo-disabled': {'$exists': False}})), 'repo').items())
 
-pickle.dump(graphs, open('pickle/graphs', 'wb'), True)
+    print 'gen completed'
+    print 'graph count:', len(graphs)
 
-print 'pickle completed'
+    pickle.dump(graphs, open('pickle/graphs', 'wb'), 2)
+
+    print 'pickle completed'
+
+
+if __name__ == '__main__':
+    main()
