@@ -54,16 +54,18 @@ def gen_graph((repo, events)):
             continue
 
         created_at = event['created_at']
-        following = set(event['following'])
-        commons = following.intersection(pre_vertices_map.keys())
-
-        pre_events_map[actor] = event
 
         vertex = graph.add_vertex()
         events_on_vertices[vertex] = event
         actors_on_vertices[vertex] = actor
+
+        if 'following' not in event:
+            continue
+
+        following = set(event['following'])
+        commons = following.intersection(pre_vertices_map.keys())
+
         # pre_vertices.append(vertex)
-        pre_vertices_map[actor] = vertex
 
         # if len(commons) == 0:
         #     edge = graph.add_edge(vertex, owner_vertex)
@@ -75,6 +77,9 @@ def gen_graph((repo, events)):
                 (created_at - pre_events_map[pre_actor]['created_at']).days
             weight = 1.0 / fib(interval + 2)
             weights_on_edges[edge] = weight
+
+        pre_events_map[actor] = event
+        pre_vertices_map[actor] = vertex
 
     return graph
 
