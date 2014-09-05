@@ -7,7 +7,7 @@ You might agree the influential developers have the powers to promote repositori
 This survey employed the well-known PageRank algorithm, the data of watching events from the [GitHub Archive](http://www.githubarchive.org/) and users' following relationships from the Github API to mine the most influential developers on Github.
 
 ## Disclaimer
-The result is based on limited data (2014/5/23 ~ 2014/8/23) and not on behalf of Github. The rank might be changed in case the collected data increased.
+The result is based on limited data (2014/1/1 ~ 2014/8/26) and not on behalf of Github. The rank might be changed in case the collected data increased.
 
 ## The Result (Tentative)
 * [Top 25 Influential Developers in General](#top-general)
