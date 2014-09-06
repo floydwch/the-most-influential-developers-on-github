@@ -56,7 +56,7 @@ There is a gentle introduction to the [Normalized PageRank](https://people.mpi-i
 ## Data Insights
 *In Progress*
 ### Evolving Graph Animation
-Evolving graph animation captures the time series of watching events and their connections, we can then analyze the compactness of a repository's community by observing the forming clusters from animation.
+Evolving graph animation captures the time series of watching events and their connections, we can then analyze the compactness of a repository's community by observing the forming clusters from animation. The animation was made of one frame per hour of the timeline, collapsing the gap of no event.
 
 #### Evolving graph animation of josephmisiti/awesome-machine-learning
 ![](images/awesome-machine-learning%40josephmisiti.gif)
