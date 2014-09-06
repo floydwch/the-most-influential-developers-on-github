@@ -58,6 +58,8 @@ There is a gentle introduction to the [Normalized PageRank](https://people.mpi-i
 *Evolving graph animation of josephmisiti/awesome-machine-learning*
 ![](images/awesome-machine-learning%40josephmisiti.gif)
 
+*Evolving graph animation of sebyddd/YouAreAwesome*
+![](images/YouAreAwesome%40sebyddd.gif)
 
 ## Software Prerequisites
 * [Python 2.7](https://www.python.org/)
