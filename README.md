@@ -64,7 +64,7 @@ The popular repository `josephmisiti/awesome-machine-learning` was created at `2
 
 #### Evolving graph animation of sebyddd/YouAreAwesome
 ![](images/YouAreAwesome%40sebyddd.gif)
-The `/sebyddd/YouAreAwesome` was found because of its strange presentation, it was created at `2014-08-18T18:50:57Z` with an accompanying post [How to get #1 trending on GitHub or ”GitHub’s security flaws”](https://medium.com/@sebyddd/how-to-get-1-trending-on-github-or-githubs-security-flaws-9f132ab7474f), according to the post, the stargazers were fabrications and was bursting at the time. We can observe clues from the animation: the animation is much shorter than `josephmisiti/awesome-machine-learning` beacuse of the burst, and it lacks clusters due to the stargazers were fabrications without natural connections.
+The `/sebyddd/YouAreAwesome` was found because of its strange presentation. It was created at `2014-08-18T18:50:57Z` with an accompanying post [How to get #1 trending on GitHub or ”GitHub’s security flaws”](https://medium.com/@sebyddd/how-to-get-1-trending-on-github-or-githubs-security-flaws-9f132ab7474f), according to the post, the stargazers were fabrications and was bursting at the time. We can observe clues from the animation: the animation is much shorter than `josephmisiti/awesome-machine-learning` beacuse of the burst, and it lacks clusters due to the stargazers were fabrications without natural connections.
 
 ## Software Prerequisites
 * [Python 2.7](https://www.python.org/)
