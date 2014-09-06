@@ -58,11 +58,11 @@ There is a gentle introduction to the [Normalized PageRank](https://people.mpi-i
 ### Evolving Graph Animation
 Evolving graph animation captures the time series of watching events and their connections, we can then analyze the compactness of a repository's community by observing the forming clusters from animation.
 
-*Evolving graph animation of josephmisiti/awesome-machine-learning*
+#### Evolving graph animation of josephmisiti/awesome-machine-learning
 ![](images/awesome-machine-learning%40josephmisiti.gif)
 The popular repository `josephmisiti/awesome-machine-learning` was created at `2014-07-15T19:11:19Z`, so the animation can cover its growth. The clusters in the graph might be communities, we can find that there is a main cluster in the center, growing up with the passage of time. There are some frames that most parts of the graph grew up simultaneously perhaps from spread outside the Github. 
 
-*Evolving graph animation of sebyddd/YouAreAwesome*
+#### Evolving graph animation of sebyddd/YouAreAwesome
 ![](images/YouAreAwesome%40sebyddd.gif)
 The `/sebyddd/YouAreAwesome` was found because of its strange presentation, it was created at `2014-08-18T18:50:57Z` with an accompanying post [How to get #1 trending on GitHub or ”GitHub’s security flaws”](https://medium.com/@sebyddd/how-to-get-1-trending-on-github-or-githubs-security-flaws-9f132ab7474f), according to the post, the stargazers were fabrications and was bursting at the time. We can observe clues from the animation: the animation is much shorter than `josephmisiti/awesome-machine-learning` beacuse of the burst, and it lacks clusters due to the stargazers were fabrications without natural connections.
 
