@@ -54,9 +54,13 @@ Since the original PageRank is specific to a single graph, we have to find a way
 There is a gentle introduction to the [Normalized PageRank](https://people.mpi-inf.mpg.de/~kberberi/presentations/2007-www2007.pdf).
 
 ## Data Insights
-*In Progress*  
+*In Progress*
+### Evolving Graph Animation
+Evolving graph animation captures the time series of watching events and their connections, we can then analyze the compactness of a repository's community by observing the forming clusters from animation.
+
 *Evolving graph animation of josephmisiti/awesome-machine-learning*
 ![](images/awesome-machine-learning%40josephmisiti.gif)
+, 
 
 *Evolving graph animation of sebyddd/YouAreAwesome*
 ![](images/YouAreAwesome%40sebyddd.gif)
