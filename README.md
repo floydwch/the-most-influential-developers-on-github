@@ -55,7 +55,8 @@ There is a gentle introduction to the [Normalized PageRank](https://people.mpi-i
 
 ## Data Insights
 *In Progress*
-![Image](images/awesome-machine-learning%40josephmisiti.gif)
+![](images/awesome-machine-learning%40josephmisiti.gif)
+*Evolving graph animation of josephmisiti/awesome-machine-learning*
 
 ## Software Prerequisites
 * [Python 2.7](https://www.python.org/)
