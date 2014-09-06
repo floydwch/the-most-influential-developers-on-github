@@ -60,7 +60,7 @@ Evolving graph animation captures the time series of watching events and their c
 
 *Evolving graph animation of josephmisiti/awesome-machine-learning*
 ![](images/awesome-machine-learning%40josephmisiti.gif)
-, 
+The popular repository `josephmisiti/awesome-machine-learning` was created at `2014-07-15T19:11:19Z`, so the animation can cover its growth. The clusters in the graph might be communities, we can find that there is a main cluster in the center, growing up with the passage of time. There are some frames that most parts of the graph grew up simultaneously perhaps from spread outside the Github. 
 
 *Evolving graph animation of sebyddd/YouAreAwesome*
 ![](images/YouAreAwesome%40sebyddd.gif)
