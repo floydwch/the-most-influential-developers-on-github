@@ -54,7 +54,7 @@ Since the original PageRank is specific to a single graph, we have to find a way
 There is a gentle introduction to the [Normalized PageRank](https://people.mpi-inf.mpg.de/~kberberi/presentations/2007-www2007.pdf).
 
 ## Data Insights
-*In Progress*
+*In Progress*  
 *Evolving graph animation of josephmisiti/awesome-machine-learning*
 ![](images/awesome-machine-learning%40josephmisiti.gif)
 
