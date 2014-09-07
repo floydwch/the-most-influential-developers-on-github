@@ -59,7 +59,7 @@ To gain better performance, using `python task_gen_events_graphs-cal_pagerank-ca
 
 ## Result Analysis
 ### Histogram of Top 10 in General
-![](images/General-histogram.png)
+![](images/General-histogram.png)  
 The maximum of a user's direct influencing stars is `starred * followers`, so the products of starred and followers of users can help to analyze the performance of our method. To make the histogram more readable, the products are square root of product indeed. To get this histogram, issuing `python task_draw_histogram General` after calculating the influence.  
 According to the histogram, the gradient of the products is falling, the PageRank method works!
 
