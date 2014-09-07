@@ -3,7 +3,7 @@
 from graph_tool.centrality import pagerank
 from pymongo import MongoClient
 from more_itertools import flatten
-import cPickle as pickle
+import pickle
 import gc
 
 
@@ -31,7 +31,17 @@ def gen_pagerank_maps(graph):
     return pr_maps
 
 
-pagerank_maps = list(flatten(map(gen_pagerank_maps, graphs)))
+def main():
+    graphs = pickle.load(open('pickle/graphs', 'rb'))
+    client = MongoClient()
+    db = client['github']
+    pageranks = db['pageranks']
 
-pickle.dump(graphs, open('pickle/graphs', 'wb'), True)
-pageranks.insert(pagerank_maps)
+    pagerank_maps = list(flatten(map(gen_pagerank_maps, graphs)))
+
+    pickle.dump(graphs, open('pickle/graphs-pageranks', 'wb'), 2)
+    pageranks.insert(pagerank_maps)
+
+
+if __name__ == '__main__':
+    main()
