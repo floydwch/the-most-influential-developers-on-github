@@ -239,9 +239,7 @@ def set_actor_info(events):
     except UnknownObjectException:
         for event in events:
             event['actor-disabled'] = True
-            event['following'] = []
-            event['hireable'] = ''
-            event['location'] = ''
+            event['actor-following'] = []
         return events
 
     following_count = actor_obj.following
@@ -255,9 +253,10 @@ def set_actor_info(events):
         range(following_pages))
 
     for event in events:
-        event['following'] = list(flatten(following))
-        event['hireable'] = actor_obj.hireable
-        event['location'] = actor_obj.location
+        event['actor-following'] = list(flatten(following))
+        event['actor-hireable'] = actor_obj.hireable
+        event['actor-location'] = actor_obj.location
+        event['actor-type'] = actor_obj.type
 
     return events
 
@@ -282,8 +281,9 @@ def set_language(events):
 
     for event in events:
         event['language'] = repo_obj.language
+        event['repo-created_at'] = repo_obj.created_at
 
-    return events
+    watch_events.insert(events)
 
 
 numbers = range(int((TO_TIME - FROM_TIME).total_seconds() / 3600))
@@ -299,6 +299,7 @@ new_watch_events = list(flatten(pool.map(set_language, us.groupBy(
 pool.close()
 pool.join()
 
-watch_events.insert(new_watch_events)
-
-print 'done'
+pool = ThreadPool(25)
+pool.map(set_actor_info, us.groupBy(new_watch_events, 'actor').values())
+pool.close()
+pool.join()
