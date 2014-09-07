@@ -28,20 +28,20 @@ import gc
 
 gc.disable()
 
-FROM_TIME = datetime(2014, 5, 23, 0)
-TO_TIME = datetime(2014, 8, 23, 0)
-THREAD_NUMBER = 20
+FROM_TIME = datetime(2014, 1, 1, 0)
+TO_TIME = datetime(2014, 8, 27, 0)
+PROCESS_NUMBER = 20
 MONGO_MAX_POOL_SIZE = 800
 
 logging.basicConfig(filename='grab.log', level=logging.WARNING)
 
-client = MongoClient(max_pool_size=MONGO_MAX_POOL_SIZE / THREAD_NUMBER)
+client = MongoClient(max_pool_size=MONGO_MAX_POOL_SIZE / PROCESS_NUMBER)
 db = client['github']
 watch_events = db['watch_events']
 processed_times = db['processed_times']
 defects = db['defects']
 
-githubs = map(lambda x: Github(x['login'], x['passwd']), users)
+githubs = map(lambda x: Github(x['login'], x['passwd'], timeout=3600), users)
 
 
 def items_insert(collection):
@@ -288,25 +288,12 @@ def set_language(events):
 
 numbers = range(int((TO_TIME - FROM_TIME).total_seconds() / 3600))
 shuffle(numbers)
-pool = Pool(20)
+pool = Pool(PROCESS_NUMBER)
 new_watch_events = list(flatten(pool.map(grab, numbers)))
 pool.close()
 pool.join()
 
-print 'original watching event count:', len(new_watch_events)
-
-count = us.countBy(new_watch_events, lambda x, _: x['repo'])
-new_watch_events = filter(lambda x: count[x['repo']] > 1, new_watch_events)
-
-print 'more than 1 watching event count:', len(new_watch_events)
-
-pool = ThreadPool(24)
-new_watch_events = list(flatten(pool.map(set_actor_info, us.groupBy(
-    new_watch_events, 'actor').values())))
-pool.close()
-pool.join()
-
-pool = ThreadPool(24)
+pool = ThreadPool(25)
 new_watch_events = list(flatten(pool.map(set_language, us.groupBy(
     new_watch_events, 'repo').values())))
 pool.close()
