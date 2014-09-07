@@ -66,7 +66,7 @@ influence_specs = {
 
 def main():
     for field, spec in influence_specs.items():
-        ranks = influences.find({'field': field}).sort('ranks', ASCENDING)
+        ranks = influences.find({'field': field})
 
         if not ranks:
             ranks = influence_ranks(spec)
