@@ -9,7 +9,7 @@ This survey employed the well-known PageRank algorithm, the data of watching eve
 ## Disclaimer
 The result is based on limited data (2014/1/1 ~ 2014/8/26) and not on behalf of Github. The rank might be changed in case the collected data increased.
 
-## The Result (Tentative)
+## The Result
 * [Top 25 Influential Developers in General](#top-general)
 * [Top 25 Influential Developers in Python](#top-python)
 * [Top 25 Influential Developers in JavaScript](#top-js)
