@@ -82,6 +82,7 @@ The `/sebyddd/YouAreAwesome` was found because of its strange presentation. It w
 * [PyMongo 2.7](http://api.mongodb.org/python/current/)
 * [PyGithub 1.25](http://jacquev6.github.io/PyGithub/v1/introduction.html)
 * [graph-tool 2.2](http://graph-tool.skewed.de/)
+* [matplotlib 1.4](http://matplotlib.org/)
 * [Gevent](http://www.gevent.org/)
 * [lxml](http://lxml.de/)
 * [underscore.py](http://serkanyersen.github.io/underscore.py/)
