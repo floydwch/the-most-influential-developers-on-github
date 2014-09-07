@@ -43,6 +43,9 @@ Suppose the actor has less possibility to influence followers by time, to dimini
 Issue `python task_cal_pagerank` then `python task_cal_influence`.
 We can score the influence among users by PageRank since the cascade of watching events can be represented as a directed graph, and so forth we can get the influence of a user by combining scores which are the user got from involved graphs. To reduce noise, the score equals the unit `1` were removed before combining.
 
+## Integrated Process
+To gain better performance, using `python task_gen_events_graphs-cal_pagerank-cal_influence.py` for integrating the processes from `task_gen_events_graphs` to `task_cal_influence`.
+
 ### PageRank
 [PageRank](http://en.wikipedia.org/wiki/PageRank) is a link analysis algorithm and it assigns a numerical weight to each element of a hyperlinked set of documents, such as the World Wide Web, with the purpose of "measuring" its relative importance within the set.
 In this survey, the elements are of the watching events and the links are of the following relationship among actors.
@@ -62,7 +65,7 @@ The popular repository `josephmisiti/awesome-machine-learning` was created at `2
 
 #### Evolving graph animation of sebyddd/YouAreAwesome
 ![](images/YouAreAwesome%40sebyddd.gif)
-The `/sebyddd/YouAreAwesome` was found because of its strange presentation. It was created at `2014-08-18T18:50:57Z` with an accompanying post [How to get #1 trending on GitHub or ”GitHub’s security flaws”](https://medium.com/@sebyddd/how-to-get-1-trending-on-github-or-githubs-security-flaws-9f132ab7474f), according to the post, the stargazers were fabrications and was bursting at the time. We can observe clues from the animation: the animation is much shorter than `josephmisiti/awesome-machine-learning` beacuse of the burst, and it lacks clusters due to the stargazers were fabrications without natural connections.
+The `/sebyddd/YouAreAwesome` was found because of its strange presentation. It was created at `2014-08-18T18:50:57Z` with an accompanying post [How to get #1 trending on GitHub or ”GitHub’s security flaws”](https://medium.com/@sebyddd/how-to-get-1-trending-on-github-or-githubs-security-flaws-9f132ab7474f), according to the post, the stargazers were fabrications and was bursting at the time. We can observe some clues from the animation: the animation is much shorter than `josephmisiti/awesome-machine-learning` beacuse of the burst, and it lacks clusters due to the stargazers were fabrications without natural connections.
 
 ## Software Prerequisites
 * [Python 2.7](https://www.python.org/)
