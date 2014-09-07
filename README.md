@@ -54,6 +54,10 @@ In this survey, the elements are of the watching events and the links are of the
 Since the original PageRank is specific to a single graph, we have to find a way to combine PageRanks from multiple graphs, that is, the PageRank have to be normalized. The PageRank can be normalized by dividing the original PageRank by the least PageRank.
 There is a gentle introduction to the [Normalized PageRank](https://people.mpi-inf.mpg.de/~kberberi/presentations/2007-www2007.pdf).
 
+## Result Analysis
+### Histogram of Top 10 in General
+![](images/General-histogram.png)
+
 ## Data Insights
 *In Progress*
 ### Evolving Graph Animation
