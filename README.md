@@ -52,7 +52,7 @@ Since the original PageRank is specific to a single graph, we have to find a way
 There is a gentle introduction to the [Normalized PageRank](https://people.mpi-inf.mpg.de/~kberberi/presentations/2007-www2007.pdf).
 
 ### Classification by Language
-Besides of the ranking in general, we can consider ranking by language since Github API can provide the metadata which includes the language of repository, and then we can only display the PageRank algorithm on selected repositories which are of the same language. However, the result might not very make sense due to the misclassification of languages.
+Besides of the ranking in general, we can consider ranking by language since Github API can provide the metadata which includes the language of repository, and then we can only display the PageRank algorithm on selected repositories which are of the same language. However, the result might not very make sense due to the naive classification of languages.
 
 ## Integrated Process
 To gain better performance, using `python task_gen_events_graphs-cal_pagerank-cal_influence.py` for integrating the processes from `task_gen_events_graphs` to `task_cal_influence`.
