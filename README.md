@@ -57,6 +57,7 @@ There is a gentle introduction to the [Normalized PageRank](https://people.mpi-i
 ## Result Analysis
 ### Histogram of Top 10 in General
 ![](images/General-histogram.png)
+The maximum of a user's direct influencing stars is `starred * followers`, so the products of starred and followers of users can help to analyze the performance of our method. To make the histogram more readable, the products are square root of product indeed.
 
 ## Data Insights
 *In Progress*
