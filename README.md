@@ -366,7 +366,7 @@ The Venn diagram of top 25 in C++ and Javascript has an order 10 intersection be
 24. [f2prateek](https://github.com/f2prateek)
 25. [RomainPiel](https://github.com/RomainPiel)
 
-## <a name="top-csharp"></a> Top 25 Influential Developers in C#
+## <a name="top-csharp"></a> Top 25 Influential Developers in C&#35;
 1. [shanselman](https://github.com/shanselman)
 2. [tugberkugurlu](https://github.com/tugberkugurlu)
 3. [leekelleher](https://github.com/leekelleher)
