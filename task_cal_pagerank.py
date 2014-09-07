@@ -9,24 +9,27 @@ import gc
 
 gc.disable()
 
-graphs = pickle.load(open('pickle/graphs', 'rb'))
-client = MongoClient()
-db = client['github']
-pageranks = db['pageranks']
 
-
-def gen_pagerank_maps(graph):
-    pr = pagerank(
-        graph, weight=graph.edge_properties['weights_on_edges'])
+def gen_pagerank(graph):
+    if graph.num_edges():
+        pr = pagerank(
+            graph, weight=graph.edge_properties['weights_on_edges'])
+    else:
+        pr = pagerank(graph)
 
     pr.a /= pr.a.min()
     graph.vertex_properties['pagerank'] = pr
 
+    return graph
+
+
+def gen_pagerank_maps(graph):
     pr_maps = [{
         'repo': graph.graph_properties['repo_on_graph'],
         'language': graph.graph_properties['language_on_graph'],
         'actor': graph.vertex_properties['actors_on_vertices'][vertex],
-        'centrality': pr[vertex]} for vertex in graph.vertices()]
+        'pagerank': graph.vertex_properties['pagerank'][vertex]}
+        for vertex in graph.vertices()]
 
     return pr_maps
 
