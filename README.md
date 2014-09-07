@@ -68,16 +68,16 @@ According to the histogram, the gradient of the products is falling, the PageRan
 Evolving graph animation captures the time series of watching events and their connections, we can then analyze the compactness of a repository's community by observing the forming clusters from animation. The animation was made of one frame per hour of the timeline, collapsing the gap of no event. To make the animation, issuing `python task_draw_graphs {repository's full name}`.
 
 #### Observing the Growth of a Popular Repository
-![](images/awesome-machine-learning%40josephmisiti.gif)
+![](images/awesome-machine-learning%40josephmisiti.gif)  
 The popular repository `josephmisiti/awesome-machine-learning` was created at `2014-07-15T19:11:19Z`, so the animation can cover its growth. The clusters in the graph might be communities, we can find that there is a main cluster in the center, growing up with the passage of time. There are some frames that most parts of the graph grew up simultaneously perhaps from spread outside the Github.
 
 #### Fabrication Detection
-![](images/YouAreAwesome%40sebyddd.gif)
+![](images/YouAreAwesome%40sebyddd.gif)  
 The `/sebyddd/YouAreAwesome` was found because of its strange presentation. It was created at `2014-08-18T18:50:57Z` with an accompanying post [How to get #1 trending on GitHub or ”GitHub’s security flaws”](https://medium.com/@sebyddd/how-to-get-1-trending-on-github-or-githubs-security-flaws-9f132ab7474f), according to the post, the stargazers were fabrications and was bursting at the time. We can observe some clues from the animation: the animation is much shorter than `josephmisiti/awesome-machine-learning` beacuse of the burst, and it lacks clusters due to the stargazers were fabrications without natural connections.
 
 ### Community Overlapping
 #### NodeJS Community Overlapping on C++ and JavaScript
-![](images/C++-JavaScript-venn2.png)
+![](images/C++-JavaScript-venn2.png)  
 The Venn diagram of top 25 in C++ and Javascript has an order 10 intersection because many repositories for NodeJS were created by C++, one can review the developers in the intersection to realize the fact. The intersection is `set([u'mcollina', u'jeresig', u'sindresorhus', u'eugeneware', u'hughsk', u'andrew', u'visionmedia', u'juliangruber', u'hij1nx', u'jwerle'])`.
 
 ## Software Prerequisites
