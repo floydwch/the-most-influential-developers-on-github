@@ -76,8 +76,8 @@ The popular repository `josephmisiti/awesome-machine-learning` was created at `2
 The `/sebyddd/YouAreAwesome` was found because of its strange presentation. It was created at `2014-08-18T18:50:57Z` with an accompanying post [How to get #1 trending on GitHub or ”GitHub’s security flaws”](https://medium.com/@sebyddd/how-to-get-1-trending-on-github-or-githubs-security-flaws-9f132ab7474f), according to the post, the stargazers were fabrications and was bursting at the time. We can observe some clues from the animation: the animation is much shorter than `josephmisiti/awesome-machine-learning` beacuse of the burst, and it lacks clusters due to the stargazers were fabrications without natural connections.
 
 ### Overlapping Communities
-#### NodeJS Community Overlapping on C, C++ and JavaScript
-![](images/C-C++-JavaScript-venns.png)
+#### NodeJS Community Overlapping on C++ and JavaScript
+![](images/C++-JavaScript-venn2.png)
 
 ## Software Prerequisites
 * [Python 2.7](https://www.python.org/)
