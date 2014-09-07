@@ -197,7 +197,7 @@ The Venn diagram of top 25 in C++ and Javascript has an order 10 intersection be
 17. [pengwynn](https://github.com/pengwynn)
 18. [michaelhood](https://github.com/michaelhood)
 19. [fatih](https://github.com/fatih)
-20. takuan-[osho](https://github.com/osho)
+20. [takuan-osho](https://github.com/takuan-osho)
 21. [nyarla](https://github.com/nyarla)
 22. [fgrehm](https://github.com/fgrehm)
 23. [armon](https://github.com/armon)
@@ -233,7 +233,7 @@ The Venn diagram of top 25 in C++ and Javascript has an order 10 intersection be
 
 ## <a name="top-php"></a> Top 25 Influential Developers in PHP
 1. [GrahamCampbell](https://github.com/GrahamCampbell)
-2. vojtech-[dobes](https://github.com/dobes)
+2. [vojtech-dobes](https://github.com/vojtech-dobes)
 3. [Ocramius](https://github.com/Ocramius)
 4. [msurguy](https://github.com/msurguy)
 5. [lsmith77](https://github.com/lsmith77)
@@ -252,7 +252,7 @@ The Venn diagram of top 25 in C++ and Javascript has an order 10 intersection be
 18. [fprochazka](https://github.com/fprochazka)
 19. [cordoval](https://github.com/cordoval)
 20. [JanTvrdik](https://github.com/JanTvrdik)
-21. Vrtak-[CZ](https://github.com/CZ)
+21. [Vrtak-CZ](https://github.com/Vrtak-CZ)
 22. [hrach](https://github.com/hrach)
 23. [javiereguiluz](https://github.com/javiereguiluz)
 24. [xboston](https://github.com/xboston)
@@ -294,7 +294,7 @@ The Venn diagram of top 25 in C++ and Javascript has an order 10 intersection be
 6. [andrew](https://github.com/andrew)
 7. [cloudhead](https://github.com/cloudhead)
 8. [clowwindy](https://github.com/clowwindy)
-9. r-[lyeh](https://github.com/lyeh)
+9. [r-lyeh](https://github.com/r-lyeh)
 10. [saghul](https://github.com/saghul)
 11. [mattt](https://github.com/mattt)
 12. [pengwynn](https://github.com/pengwynn)
@@ -315,7 +315,7 @@ The Venn diagram of top 25 in C++ and Javascript has an order 10 intersection be
 ## <a name="top-cplusplus"></a> Top 25 Influential Developers in C++
 1. [jeresig](https://github.com/jeresig)
 2. [osteele](https://github.com/osteele)
-3. r-[lyeh](https://github.com/lyeh)
+3. [r-lyeh](https://github.com/r-lyeh)
 4. [zcbenz](https://github.com/zcbenz)
 5. [jwerle](https://github.com/jwerle)
 6. [sindresorhus](https://github.com/sindresorhus)
@@ -456,7 +456,7 @@ The Venn diagram of top 25 in C++ and Javascript has an order 10 intersection be
 6. [darinmorrison](https://github.com/darinmorrison)
 7. [CodeBlock](https://github.com/CodeBlock)
 8. [cloudhead](https://github.com/cloudhead)
-9. rehno-[lindeque](https://github.com/lindeque)
+9. [rehno-lindeque](https://github.com/rehno-lindeque)
 10. [TimothyKlim](https://github.com/TimothyKlim)
 11. [egonSchiele](https://github.com/egonSchiele)
 12. [rockymadden](https://github.com/rockymadden)
@@ -476,7 +476,7 @@ The Venn diagram of top 25 in C++ and Javascript has an order 10 intersection be
 
 ## <a name="top-scala"></a> Top 25 Influential Developers in Scala
 1. [ryanlecompte](https://github.com/ryanlecompte)
-2. xuwei-[k](https://github.com/k)
+2. [xuwei-k](https://github.com/xuwei-k)
 3. [jboner](https://github.com/jboner)
 4. [softprops](https://github.com/softprops)
 5. [ktoso](https://github.com/ktoso)
