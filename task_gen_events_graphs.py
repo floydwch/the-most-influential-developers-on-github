@@ -55,10 +55,10 @@ def gen_graph((repo, events)):
         events_on_vertices[vertex] = event
         actors_on_vertices[vertex] = actor
 
-        if 'following' not in event:
+        if 'actor-following' not in event:
             continue
 
-        following = set(event['following'])
+        following = set(event['actor-following'])
         commons = following.intersection(pre_vertices_map.keys())
 
         # pre_vertices.append(vertex)
