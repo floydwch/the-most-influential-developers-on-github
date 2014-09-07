@@ -51,6 +51,9 @@ In this survey, the elements are of the watching events and the links are of the
 Since the original PageRank is specific to a single graph, we have to find a way to combine PageRanks from multiple graphs, that is, the PageRank have to be normalized. The PageRank can be normalized by dividing the original PageRank by the least PageRank.
 There is a gentle introduction to the [Normalized PageRank](https://people.mpi-inf.mpg.de/~kberberi/presentations/2007-www2007.pdf).
 
+### Classification by Language
+Besides of the ranking in general, we can consider ranking by language since Github API can provide the metadata which includes the language of repository, and then we can only display the PageRank algorithm on selected repositories which are of the same language. 
+
 ## Integrated Process
 To gain better performance, using `python task_gen_events_graphs-cal_pagerank-cal_influence.py` for integrating the processes from `task_gen_events_graphs` to `task_cal_influence`.
 
