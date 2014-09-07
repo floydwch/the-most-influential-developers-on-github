@@ -60,7 +60,7 @@ To gain better performance, using `python task_gen_events_graphs-cal_pagerank-ca
 ## Result Analysis
 ### Histogram of Top 10 in General
 ![](images/General-histogram.png)
-The maximum of a user's direct influencing stars is `starred * followers`, so the products of starred and followers of users can help to analyze the performance of our method. To make the histogram more readable, the products are square root of product indeed.  
+The maximum of a user's direct influencing stars is `starred * followers`, so the products of starred and followers of users can help to analyze the performance of our method. To make the histogram more readable, the products are square root of product indeed. To get this histogram, issuing `python task_draw_histogram General` after calculating influence.  
 According to the histogram, the gradient of the products is falling, the PageRank method works!
 
 ## Data Insights
@@ -83,6 +83,7 @@ The `/sebyddd/YouAreAwesome` was found because of its strange presentation. It w
 * [PyGithub 1.25](http://jacquev6.github.io/PyGithub/v1/introduction.html)
 * [graph-tool 2.2](http://graph-tool.skewed.de/)
 * [Gevent](http://www.gevent.org/)
+* [lxml](http://lxml.de/)
 * [underscore.py](http://serkanyersen.github.io/underscore.py/)
 * [funcy](https://github.com/Suor/funcy)
 * [more-itertools](https://pythonhosted.org/more-itertools/api.html)
