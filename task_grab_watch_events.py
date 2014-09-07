@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
 
+from json import JSONDecoder
+from gzip import GzipFile
+from urlgrabber import urlopen
+from datetime import timedelta
 from gevent.pool import Pool as GPool
 from pymongo import MongoClient
 from datetime import datetime
@@ -53,8 +57,6 @@ def items_insert(collection):
 
 
 def loads_invalid_obj_list(s):
-    from json import JSONDecoder
-
     decoder = JSONDecoder()
     s_len = len(s)
     objs = []
@@ -170,10 +172,6 @@ def set_time(time, event):
 
 
 def grab(number):
-    from gzip import GzipFile
-    from urlgrabber import urlopen
-    from datetime import timedelta
-
     time_str = (FROM_TIME + timedelta(hours=number)).strftime('%Y-%m-%d-%-H')
 
     watch_events = []
