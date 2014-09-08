@@ -37,6 +37,7 @@ Since the task consumes the Github API, please add robots' login names and passw
 ## Build Graphs
 To build graphs, please make sure the watch events have already collected to MongoDB and issue `python task_gen_events_graphs`.
 Every repository's watching event can be represented a 3-tuple vertex likes (event's created time, repository's name, actor's name), each vertex has directed edges with its following users' watching events formed vertices who are also stargazers of the repository but prior to the user, in the other words, a graph represents the cascade of a repository's watching events. The whole Github's repositories' watching events form many graphs.
+In addition, the owner of the repository also has edges from the followers who starred the repository.
 
 ### Edge Weighting
 Suppose the actor has less possibility to influence followers by time, to diminish the influence by time, the edges are weighted by a Fibonacci function, `1.0 / fib(interval + 2)`, the `fib` is the [Fibonacci series](http://en.wikipedia.org/wiki/Fibonacci_number) from 0 and the unit of interval is a day. Longer the events' interval, lesser the connection is between events.
