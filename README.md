@@ -80,7 +80,7 @@ The `/sebyddd/YouAreAwesome` was found because of its strange presentation. It w
 ### Community Overlapping
 #### NodeJS Community Overlapping on C++ and JavaScript
 ![](images/C++-JavaScript-venn2.png)
-The Venn diagram of top 25 in C++ and Javascript has an order 10 intersection because many repositories for NodeJS were created by C++, one can review the developers in the intersection to realize the fact. The intersection is `set([u'mcollina', u'jeresig', u'sindresorhus', u'eugeneware', u'hughsk', u'andrew', u'visionmedia', u'juliangruber', u'hij1nx', u'jwerle'])`.
+The Venn diagram of top 25 in C++ and Javascript has an order 6 intersection because many repositories for NodeJS were created by C++, one can review the developers in the intersection to realize the fact. The intersection is [mcollina](https://github.com/mcollina), [jeresig](https://github.com/jeresig), [sindresorhus](https://github.com/sindresorhus), [hughsk](https://github.com/hughsk), [andrew](https://github.com/andrew) and [visionmedia](https://github.com/visionmedia).
 
 ## Software Prerequisites
 * [Python 2.7](https://www.python.org/)
