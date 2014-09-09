@@ -36,10 +36,13 @@ def gen_graph((repo, events)):
     pre_events_map = {}
     pre_vertices_map = {}
 
-    # owner_vertex = graph.add_vertex()
-    # owner = repo.split('/')[0]
-    # actors_on_vertices[owner_vertex] = owner
-    # pre_vertices_map[owner] = owner_vertex
+    owner_vertex = graph.add_vertex()
+    owner = repo.split('/')[0]
+    dummy_event = {'created_at': events[0]['repo-created_at']}
+    actors_on_vertices[owner_vertex] = owner
+    events_on_vertices[owner_vertex] = dummy_event
+    pre_vertices_map[owner] = owner_vertex
+    pre_events_map[owner] = dummy_event
 
     events = sorted(events, key=lambda x: x['created_at'])
 
@@ -55,8 +58,8 @@ def gen_graph((repo, events)):
         events_on_vertices[vertex] = event
         actors_on_vertices[vertex] = actor
 
-        if 'actor-following' not in event:
-            continue
+        # if 'actor-following' not in event:
+        #     continue
 
         following = set(event['actor-following'])
         commons = following.intersection(pre_vertices_map.keys())
@@ -68,10 +71,20 @@ def gen_graph((repo, events)):
         #     weights_on_edges[edge] = 1.0
 
         for pre_actor in commons:
-            edge = graph.add_edge(vertex, pre_vertices_map[pre_actor])
+
             interval =\
                 (created_at - pre_events_map[pre_actor]['created_at']).days
-            weight = 1.0 / fib(interval + 2)
+
+            if interval < 0:
+                continue
+
+            edge = graph.add_edge(vertex, pre_vertices_map[pre_actor])
+
+            if pre_actor == owner:
+                weight = 1.0
+            else:
+                weight = 1.0 / fib(interval + 2)
+
             weights_on_edges[edge] = weight
 
         pre_events_map[actor] = event
