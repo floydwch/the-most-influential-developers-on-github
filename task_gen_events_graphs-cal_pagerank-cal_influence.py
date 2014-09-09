@@ -42,7 +42,8 @@ def set_events_info((repo, events)):
         return watch_events.find_one(
             {'_id': event['_id']},
             {'repo': True, 'actor': True, 'created_at': True,
-                'language': True, 'actor-following': True, '_id': False}
+                'language': True, 'actor-following': True,
+                'repo-created_at': True, '_id': False}
         )
 
     return (repo, map(fetch, events))
