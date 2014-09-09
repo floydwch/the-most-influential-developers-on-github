@@ -102,7 +102,8 @@ def main(repo):
     events = list(db['watch_events'].find(
         {'repo-disabled': {'$exists': False}, 'repo': repo},
         {'actor': True, 'created_at': True,
-            'actor-following': True, 'language': True}))
+            'actor-following': True, 'language': True,
+            'repo-created_at': True}))
 
     graph = gen_pagerank(gen_graph((repo, events)))
     draw_graph_animation(graph)
