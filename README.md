@@ -79,7 +79,7 @@ The popular repository [josephmisiti/awesome-machine-learning](https://github.co
 The [sebyddd/YouAreAwesome](https://github.com/sebyddd/YouAreAwesome) was found because of its strange presentation. It was created at `2014-08-18T18:50:57Z` with an accompanying post [How to get #1 trending on GitHub or ”GitHub’s security flaws”](https://medium.com/@sebyddd/how-to-get-1-trending-on-github-or-githubs-security-flaws-9f132ab7474f), according to the post, the stargazers were fabrications and was bursting at the time. We can observe some clues from the animation: the animation is much shorter than [josephmisiti/awesome-machine-learning](https://github.com/josephmisiti/awesome-machine-learning) beacuse of the burst, and it lacks scattered clusters due to the stargazers were fabrications without natural connections.
 
 ### Community Overlapping
-#### NodeJS Community Overlapping on C++ and JavaScript
+#### NodeJS Community Overlaps on C++ and JavaScript
 ![](images/C++-JavaScript-venn2.png)
 The Venn diagram of top 25 in C++ and Javascript has an order 6 intersection because many repositories for NodeJS were created by C++, one can review the developers in the intersection to realize the fact. The intersection contains [mcollina](https://github.com/mcollina), [jeresig](https://github.com/jeresig), [sindresorhus](https://github.com/sindresorhus), [hughsk](https://github.com/hughsk), [andrew](https://github.com/andrew) and [visionmedia](https://github.com/visionmedia).
 
