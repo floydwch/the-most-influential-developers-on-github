@@ -1,3 +1,5 @@
+[![Analytics](https://ga-beacon.appspot.com/UA-35413710-3/floydsoft/the-most-influential-developers-on-github)](https://github.com/igrigorik/ga-beacon)
+
 # The Most Influential Developers on Github -- Github Data Challenge 2014
 
 There are many developers on Github, following influential developers is highly beneficial because they usually spread promising repositories.
@@ -585,5 +587,3 @@ The Venn diagram of top 25 in C++ and Javascript has an order 6 intersection bec
 23. [choptastic](https://github.com/choptastic)
 24. [lpgauth](https://github.com/lpgauth)
 25. [cmeiklejohn](https://github.com/cmeiklejohn)
-
-[![Analytics](https://ga-beacon.appspot.com/UA-35413710-3/floydsoft/the-most-influential-developers-on-github)](https://github.com/igrigorik/ga-beacon)
